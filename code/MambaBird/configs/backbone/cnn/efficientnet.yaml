@@ -1,0 +1,7 @@
+# EfficientNet 骨干网络基础配置
+backbone:
+  type: "efficientnet"
+  variant: "efficientnet_b2"
+  pretrained: false
+  num_classes: 182
+  in_channels: 1

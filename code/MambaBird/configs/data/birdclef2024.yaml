@@ -1,0 +1,21 @@
+# BirdCLEF2024 数据集基础配置
+dataset_name: "birdclef2024"
+raw_data_dir: "data_raw/birdclef2024"
+processed_data_dir: "data_processed"
+
+audio:
+  sample_rate: 32000        # 采样率（Hz）
+  clip_duration: 5.0        # 每段切片时长（秒）
+  num_channels: 1           # 单通道音频
+
+split:
+  train_ratio: 0.8
+  val_ratio: 0.1
+  test_ratio: 0.1
+  random_seed: 42
+
+dataloader:
+  batch_size: 32
+  num_workers: 4
+  shuffle: true
+  pin_memory: true

@@ -1,0 +1,18 @@
+# mCAF 流形约束可学习声学滤波器基础配置（核心创新模块）
+frontend:
+  type: "mcaf"
+  n_filters: 128
+  sample_rate: 32000
+
+  sinkhorn:
+    num_iterations: 20       # Sinkhorn-Knopp 迭代次数
+    epsilon: 0.1             # 正则化系数
+    convergence_tol: 1.0e-6  # 收敛容差
+
+  manifold_constraint:
+    enable: true
+    constraint_type: "doubly_stochastic"  # 双随机矩阵流形约束
+    energy_conservation_weight: 1.0       # 能量守恒约束权重
+
+  gradient_monitor:
+    enable: true             # 是否记录梯度范数变化曲线（对应实验一指标）

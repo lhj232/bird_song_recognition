@@ -1,0 +1,5 @@
+# 结构化剪枝基础配置
+pruning:
+  method: "inverse_knapsack"   # 逆背包准则结构化剪枝
+  target_sparsity: 0.5         # 目标稀疏度
+  fine_tune_epochs: 10

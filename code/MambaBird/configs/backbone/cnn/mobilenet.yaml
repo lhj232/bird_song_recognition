@@ -1,0 +1,7 @@
+# MobileNet 骨干网络基础配置
+backbone:
+  type: "mobilenet"
+  variant: "mobilenet_v3_small"
+  pretrained: false
+  num_classes: 182
+  in_channels: 1

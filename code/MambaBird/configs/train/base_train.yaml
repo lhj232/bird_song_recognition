@@ -1,0 +1,23 @@
+# 标准训练循环基础配置
+train:
+  epochs: 100
+  optimizer:
+    type: "adamw"
+    learning_rate: 1.0e-3
+    weight_decay: 1.0e-4
+
+  scheduler:
+    type: "cosine_annealing"
+    warmup_epochs: 5
+
+  device: "cuda"
+  mixed_precision: true
+  gradient_clip_norm: 5.0
+
+  checkpoint:
+    save_interval_epochs: 5
+    save_best_only: false
+
+  reproducibility:
+    random_seed: 42
+    deterministic: true

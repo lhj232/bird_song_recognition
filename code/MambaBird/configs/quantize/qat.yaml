@@ -1,0 +1,6 @@
+# 量化感知训练（QAT）基础配置
+qat:
+  bit_width: 8                 # 量化位宽
+  calibration_batches: 50      # 校准所用的batch数量
+  fine_tune_epochs: 10
+  target_backend: ["onnx", "tensorrt", "tflite"]

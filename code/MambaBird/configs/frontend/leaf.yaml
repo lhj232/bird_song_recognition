@@ -1,0 +1,8 @@
+# LEAF 可学习前端基础配置（对照组）
+frontend:
+  type: "leaf"
+  n_filters: 128
+  sample_rate: 32000
+  window_len: 25       # 毫秒
+  window_stride: 10    # 毫秒
+  compression: "pcen"  # 每通道能量归一化

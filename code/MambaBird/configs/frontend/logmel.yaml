@@ -1,0 +1,9 @@
+# Log-Mel 静态前端基础配置（基线对照组）
+frontend:
+  type: "logmel"
+  n_mels: 128
+  n_fft: 1024
+  hop_length: 320
+  win_length: 1024
+  fmin: 0
+  fmax: 16000

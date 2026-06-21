@@ -1,0 +1,9 @@
+# Mamba 状态空间模型骨干网络基础配置
+backbone:
+  type: "mamba"
+  d_model: 256          # 隐藏维度
+  n_layers: 8           # 状态空间层数
+  d_state: 16           # 状态空间维度
+  d_conv: 4             # 因果卷积核大小
+  expand_factor: 2      # 扩展因子
+  num_classes: 182

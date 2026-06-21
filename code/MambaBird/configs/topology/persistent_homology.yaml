@@ -1,0 +1,6 @@
+# 持续同调计算基础配置
+persistent_homology:
+  backend: "ripser"          # 持续同调计算后端，预留GPU加速扩展接口
+  max_dimension: 2           # 最大同调维度
+  downsample_before_compute: true   # 在降采样embedding后再计算，缓解计算瓶颈
+  downsample_ratio: 0.25

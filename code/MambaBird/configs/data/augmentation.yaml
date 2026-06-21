@@ -1,0 +1,17 @@
+# 数据增强（噪声合成）基础配置
+augmentation:
+  enable: true
+
+  noise_injection:
+    enable: true
+    noise_type: "non_stationary"   # 非平稳噪声，模拟野外极端环境
+    snr_db_range: [-5, 20]         # 信噪比范围（dB）
+
+  time_shift:
+    enable: true
+    max_shift_ratio: 0.1
+
+  spec_augment:
+    enable: false
+    freq_mask_param: 10
+    time_mask_param: 10

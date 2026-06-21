@@ -1,0 +1,14 @@
+# 知识蒸馏基础配置
+distillation:
+  teacher_model:
+    backbone_type: "efficientnet"
+    variant: "efficientnet_b2"
+    checkpoint_path: "experiments/teacher_baseline/checkpoints/best.pt"
+
+  student_model:
+    backbone_type: "mobilenet"
+    variant: "mobilenet_v3_small"
+
+  temperature: 4.0            # 蒸馏温度
+  alpha: 0.7                  # 软标签损失权重（1-alpha为硬标签权重）
+  epochs: 50

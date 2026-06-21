@@ -1,0 +1,7 @@
+# ResNet 骨干网络基础配置
+backbone:
+  type: "resnet"
+  variant: "resnet18"
+  pretrained: false
+  num_classes: 182
+  in_channels: 1

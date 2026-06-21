@@ -1,0 +1,8 @@
+# AST（Audio Spectrogram Transformer）骨干网络基础配置
+backbone:
+  type: "ast"
+  patch_size: 16
+  embed_dim: 192
+  depth: 12
+  num_heads: 3
+  num_classes: 182

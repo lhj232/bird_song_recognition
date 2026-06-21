@@ -1,0 +1,6 @@
+# 拓扑损失基础配置
+topo_loss:
+  enable: true
+  betti_dimensions: [0, 1]   # 关注的贝蒂数维度（连通分量、孔洞）
+  loss_weight: 0.1           # 拓扑损失在总损失中的权重
+  warmup_epochs: 5           # 拓扑损失生效前的预热轮数
