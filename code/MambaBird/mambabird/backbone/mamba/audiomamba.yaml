@@ -1,0 +1,11 @@
+# AudioMamba 骨干网络基础配置（V2新增）
+backbone:
+  type: "audiomamba"
+  d_model: 256          # 序列建模隐藏维度
+  n_layers: 8           # 堆叠的SelectiveSSMBlock层数
+  d_state: 16           # SSM隐状态维度
+  d_conv: 4             # 因果卷积核大小
+  expand_factor: 2      # 内部升维倍数
+  in_channels: 1        # 输入特征通道数（与LogMel前端单通道输出一致）
+  # num_classes 由训练脚本运行时根据数据集自动解析的标签数量动态填充
+  num_classes: -1
