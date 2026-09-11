@@ -1,0 +1,425 @@
+
+检测到 10 个物种:
+  0: asbfly
+  1: ashdro1
+  2: ashpri1
+  3: ashwoo2
+  4: asikoe2
+  5: asiope1
+  6: aspfly1
+  7: aspswi1
+  8: barfly1
+  9: barswa
+
+加载训练集...
+  找到 6755 个音频文件
+2026-06-20 12:55:34.883346: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:42] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+加载验证集...
+  找到 1694 个音频文件
+
+验证数据维度...
+  输入 shape: (64, 72000)
+  标签 shape: (64, 10)
+  标签样例: [0. 0. 0. 0. 0.]
+
+构建模型...
+Model: "model_1"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ audio_input (InputLayer)    [(None, 72000)]           0         
+                                                                 
+ mcaf_frontend (MCAFFrontend  (None, 6, 96, 1)         672       
+ )                                                               
+                                                                 
+ model (Functional)          (None, 128)               93568     
+                                                                 
+ dense (Dense)               (None, 256)               33024     
+                                                                 
+ batch_normalization_3 (Batc  (None, 256)              1024      
+ hNormalization)                                                 
+                                                                 
+ dropout_1 (Dropout)         (None, 256)               0         
+                                                                 
+ dense_1 (Dense)             (None, 10)                2570      
+                                                                 
+=================================================================
+Total params: 130,858
+Trainable params: 129,898
+Non-trainable params: 960
+_________________________________________________________________
+
+测试前向传播...
+  输出 shape: (64, 10)
+  预测样例: [9 9 9 9 9]
+  输出概率样例: [0.10027669 0.09902303 0.10033738 0.10047349 0.10091501]
+
+开始训练 25 个 epoch...
+Epoch 1/25
+106/106 [==============================] - ETA: 0s - loss: 2.9850 - top1_acc: 0.1599 - macro_f1: 0.1330   
+Epoch 1: saving model to /root/autodl-tmp/mcaf_trained_model/epoch_snap_01.keras
+
+Epoch 1: val_top1_acc improved from -inf to 0.17355, saving model to /root/autodl-tmp/mcaf_trained_model/best_model.keras
+
+[GPU] Epoch 1 耗时: 330.0s
+[GPU] 显存使用: 当前 34.6 MB, 峰值 13656.8 MB
+106/106 [==============================] - 330s 3s/step - loss: 2.9850 - top1_acc: 0.1599 - macro_f1: 0.1330 - val_loss: 2.1970 - val_top1_acc: 0.1736 - val_macro_f1: 0.0425 - lr: 5.0000e-04
+Epoch 2/25
+106/106 [==============================] - ETA: 0s - loss: 2.4491 - top1_acc: 0.2440 - macro_f1: 0.1844  
+Epoch 2: saving model to /root/autodl-tmp/mcaf_trained_model/epoch_snap_02.keras
+
+Epoch 2: val_top1_acc improved from 0.17355 to 0.18772, saving model to /root/autodl-tmp/mcaf_trained_model/best_model.keras
+
+[GPU] Epoch 2 耗时: 308.2s
+[GPU] 显存使用: 当前 34.6 MB, 峰值 13695.5 MB
+[GPU] 近 5 个 epoch 平均耗时: 319.1s
+106/106 [==============================] - 308s 3s/step - loss: 2.4491 - top1_acc: 0.2440 - macro_f1: 0.1844 - val_loss: 2.1321 - val_top1_acc: 0.1877 - val_macro_f1: 0.0603 - lr: 5.0000e-04
+Epoch 3/25
+106/106 [==============================] - ETA: 0s - loss: 2.2212 - top1_acc: 0.2887 - macro_f1: 0.2080  
+Epoch 3: saving model to /root/autodl-tmp/mcaf_trained_model/epoch_snap_03.keras
+
+Epoch 3: val_top1_acc improved from 0.18772 to 0.26210, saving model to /root/autodl-tmp/mcaf_trained_model/best_model.keras
+
+[GPU] Epoch 3 耗时: 307.5s
+[GPU] 显存使用: 当前 34.6 MB, 峰值 13695.5 MB
+[GPU] 近 5 个 epoch 平均耗时: 315.2s
+106/106 [==============================] - 307s 3s/step - loss: 2.2212 - top1_acc: 0.2887 - macro_f1: 0.2080 - val_loss: 2.1068 - val_top1_acc: 0.2621 - val_macro_f1: 0.1304 - lr: 5.0000e-04
+Epoch 4/25
+106/106 [==============================] - ETA: 0s - loss: 2.0809 - top1_acc: 0.3014 - macro_f1: 0.2094  
+Epoch 4: saving model to /root/autodl-tmp/mcaf_trained_model/epoch_snap_04.keras
+
+Epoch 4: val_top1_acc did not improve from 0.26210
+
+[GPU] Epoch 4 耗时: 308.4s
+[GPU] 显存使用: 当前 34.6 MB, 峰值 13695.5 MB
+[GPU] 近 5 个 epoch 平均耗时: 313.5s
+106/106 [==============================] - 308s 3s/step - loss: 2.0809 - top1_acc: 0.3014 - macro_f1: 0.2094 - val_loss: 2.1330 - val_top1_acc: 0.2237 - val_macro_f1: 0.1009 - lr: 5.0000e-04
+Epoch 5/25
+106/106 [==============================] - ETA: 0s - loss: 2.0089 - top1_acc: 0.3195 - macro_f1: 0.2191  
+Epoch 5: saving model to /root/autodl-tmp/mcaf_trained_model/epoch_snap_05.keras
+
+Epoch 5: val_top1_acc did not improve from 0.26210
+
+[GPU] Epoch 5 耗时: 308.5s
+[GPU] 显存使用: 当前 34.6 MB, 峰值 13695.5 MB
+[GPU] 近 5 个 epoch 平均耗时: 312.5s
+106/106 [==============================] - 309s 3s/step - loss: 2.0089 - top1_acc: 0.3195 - macro_f1: 0.2191 - val_loss: 2.2151 - val_top1_acc: 0.2249 - val_macro_f1: 0.1027 - lr: 5.0000e-04
+Epoch 6/25
+106/106 [==============================] - ETA: 0s - loss: 1.9283 - top1_acc: 0.3420 - macro_f1: 0.2337  
+Epoch 6: saving model to /root/autodl-tmp/mcaf_trained_model/epoch_snap_06.keras
+
+Epoch 6: val_top1_acc did not improve from 0.26210
+
+Epoch 6: ReduceLROnPlateau reducing learning rate to 0.0002500000118743628.
+
+[GPU] Epoch 6 耗时: 307.9s
+[GPU] 显存使用: 当前 34.6 MB, 峰值 13695.5 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.1s
+106/106 [==============================] - 308s 3s/step - loss: 1.9283 - top1_acc: 0.3420 - macro_f1: 0.2337 - val_loss: 2.2299 - val_top1_acc: 0.2290 - val_macro_f1: 0.1120 - lr: 5.0000e-04
+Epoch 7/25
+106/106 [==============================] - ETA: 0s - loss: 1.8914 - top1_acc: 0.3562 - macro_f1: 0.2414  
+Epoch 7: saving model to /root/autodl-tmp/mcaf_trained_model/epoch_snap_07.keras
+
+Epoch 7: val_top1_acc did not improve from 0.26210
+
+[GPU] Epoch 7 耗时: 308.5s
+[GPU] 显存使用: 当前 34.6 MB, 峰值 13695.5 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.2s
+106/106 [==============================] - 308s 3s/step - loss: 1.8914 - top1_acc: 0.3562 - macro_f1: 0.2414 - val_loss: 2.6381 - val_top1_acc: 0.1995 - val_macro_f1: 0.0963 - lr: 2.5000e-04
+Epoch 8/25
+106/106 [==============================] - ETA: 0s - loss: 1.8515 - top1_acc: 0.3580 - macro_f1: 0.2455  
+Epoch 8: saving model to /root/autodl-tmp/mcaf_trained_model/epoch_snap_08.keras
+
+Epoch 8: val_top1_acc did not improve from 0.26210
+Restoring model weights from the end of the best epoch: 3.
+
+[GPU] Epoch 8 耗时: 307.7s
+[GPU] 显存使用: 当前 34.7 MB, 峰值 13695.5 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.2s
+106/106 [==============================] - 308s 3s/step - loss: 1.8515 - top1_acc: 0.3580 - macro_f1: 0.2455 - val_loss: 3.1587 - val_top1_acc: 0.1812 - val_macro_f1: 0.0827 - lr: 2.5000e-04
+Epoch 8: early stopping
+
+==================================================
+最终评估
+==================================================
+加载最佳模型: /root/autodl-tmp/mcaf_trained_model/best_model.keras
+27/27 [==============================] - 26s 922ms/step - loss: 2.1068 - top1_acc: 0.2621 - macro_f1: 0.1304
+
+验证集 Loss: 2.1068
+验证集 Top-1 准确率: 0.2621
+验证集 Macro F1: 0.1304
+Traceback (most recent call last):
+  File "train_mcaf.py", line 415, in <module>
+    main()
+  File "train_mcaf.py", line 410, in main
+    json.dump(history.history, f, ensure_ascii=False, indent=2)
+  File "/root/miniconda3/lib/python3.8/json/__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "/root/miniconda3/lib/python3.8/json/encoder.py", line 431, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/root/miniconda3/lib/python3.8/json/encoder.py", line 405, in _iterencode_dict
+    yield from chunks
+  File "/root/miniconda3/lib/python3.8/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/root/miniconda3/lib/python3.8/json/encoder.py", line 438, in _iterencode
+    o = _default(o)
+  File "/root/miniconda3/lib/python3.8/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type float32 is not JSON serializable
+root@autodl-container-xy038apcsf-f6d4625e:~/autodl-tmp/BirdNET-Analyzer-main-mcaf# cd /root/autodl-tmp/BirdNET-Analyzer-main-mcaf
+root@autodl-container-xy038apcsf-f6d4625e:~/autodl-tmp/BirdNET-Analyzer-main-mcaf# python train_mcaf_resume.py
+2026-06-20 13:47:09.483937: E tensorflow/stream_executor/cuda/cuda_blas.cc:2981] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-20 13:47:10.151862: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/nvidia/lib:/usr/local/nvidia/lib64
+2026-06-20 13:47:10.151932: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/nvidia/lib:/usr/local/nvidia/lib64
+2026-06-20 13:47:10.151941: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+[GPU] 检测到 1 个 GPU 设备:
+  - /physical_device:GPU:0
+[GPU] 已启用显存按需增长策略
+
+检测到 10 个物种:
+  0: asbfly
+  1: ashdro1
+  2: ashpri1
+  3: ashwoo2
+  4: asikoe2
+  5: asiope1
+  6: aspfly1
+  7: aspswi1
+  8: barfly1
+  9: barswa
+
+加载训练集...
+  找到 6755 个音频文件
+2026-06-20 13:47:11.115498: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:42] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+加载验证集...
+  找到 1694 个音频文件
+
+构建模型...
+
+加载检查点: /root/autodl-tmp/mcaf_trained_model/epoch_snap_08.keras
+✅ 成功加载 Epoch 8 权重，继续训练！
+Model: "model_1"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ audio_input (InputLayer)    [(None, 72000)]           0         
+                                                                 
+ mcaf_frontend (MCAFFrontend  (None, 6, 96, 1)         672       
+ )                                                               
+                                                                 
+ model (Functional)          (None, 128)               93568     
+                                                                 
+ dense (Dense)               (None, 256)               33024     
+                                                                 
+ batch_normalization_3 (Batc  (None, 256)              1024      
+ hNormalization)                                                 
+                                                                 
+ dropout_1 (Dropout)         (None, 256)               0         
+                                                                 
+ dense_1 (Dense)             (None, 10)                2570      
+                                                                 
+=================================================================
+Total params: 130,858
+Trainable params: 129,898
+Non-trainable params: 960
+_________________________________________________________________
+
+从 Epoch 8 继续训练 17 个 epoch...
+Epoch 1/17
+212/212 [==============================] - ETA: 0s - loss: 1.8674 - top1_acc: 0.3711 - macro_f1: 0.2564   
+Epoch 1: saving model to /root/autodl-tmp/mcaf_trained_model_resume/epoch_snap_01.keras
+
+Epoch 1: val_top1_acc improved from -inf to 0.17591, saving model to /root/autodl-tmp/mcaf_trained_model_resume/best_model.keras
+
+[GPU] Epoch 1 耗时: 323.5s
+[GPU] 显存使用: 当前 3.4 MB, 峰值 6855.5 MB
+212/212 [==============================] - 323s 1s/step - loss: 1.8674 - top1_acc: 0.3711 - macro_f1: 0.2564 - val_loss: 4.0406 - val_top1_acc: 0.1759 - val_macro_f1: 0.0758 - lr: 2.5000e-04
+Epoch 2/17
+212/212 [==============================] - ETA: 0s - loss: 1.7978 - top1_acc: 0.3796 - macro_f1: 0.2573  
+Epoch 2: saving model to /root/autodl-tmp/mcaf_trained_model_resume/epoch_snap_02.keras
+
+Epoch 2: val_top1_acc improved from 0.17591 to 0.17887, saving model to /root/autodl-tmp/mcaf_trained_model_resume/best_model.keras
+
+[GPU] Epoch 2 耗时: 308.1s
+[GPU] 显存使用: 当前 3.4 MB, 峰值 6856.0 MB
+[GPU] 近 5 个 epoch 平均耗时: 315.8s
+212/212 [==============================] - 308s 1s/step - loss: 1.7978 - top1_acc: 0.3796 - macro_f1: 0.2573 - val_loss: 4.2052 - val_top1_acc: 0.1789 - val_macro_f1: 0.0734 - lr: 2.5000e-04
+Epoch 3/17
+212/212 [==============================] - ETA: 0s - loss: 1.7346 - top1_acc: 0.4010 - macro_f1: 0.2774  
+Epoch 3: saving model to /root/autodl-tmp/mcaf_trained_model_resume/epoch_snap_03.keras
+
+Epoch 3: val_top1_acc improved from 0.17887 to 0.20543, saving model to /root/autodl-tmp/mcaf_trained_model_resume/best_model.keras
+
+[GPU] Epoch 3 耗时: 308.9s
+[GPU] 显存使用: 当前 3.4 MB, 峰值 6856.5 MB
+[GPU] 近 5 个 epoch 平均耗时: 313.5s
+212/212 [==============================] - 309s 1s/step - loss: 1.7346 - top1_acc: 0.4010 - macro_f1: 0.2774 - val_loss: 3.4788 - val_top1_acc: 0.2054 - val_macro_f1: 0.0933 - lr: 2.5000e-04
+Epoch 4/17
+212/212 [==============================] - ETA: 0s - loss: 1.6776 - top1_acc: 0.4262 - macro_f1: 0.2924  
+Epoch 4: saving model to /root/autodl-tmp/mcaf_trained_model_resume/epoch_snap_04.keras
+
+Epoch 4: val_top1_acc did not improve from 0.20543
+
+[GPU] Epoch 4 耗时: 309.7s
+[GPU] 显存使用: 当前 3.4 MB, 峰值 6856.5 MB
+[GPU] 近 5 个 epoch 平均耗时: 312.5s
+212/212 [==============================] - 310s 1s/step - loss: 1.6776 - top1_acc: 0.4262 - macro_f1: 0.2924 - val_loss: 4.7884 - val_top1_acc: 0.1830 - val_macro_f1: 0.0708 - lr: 2.5000e-04
+Epoch 5/17
+212/212 [==============================] - ETA: 0s - loss: 1.6428 - top1_acc: 0.4269 - macro_f1: 0.2942  
+Epoch 5: saving model to /root/autodl-tmp/mcaf_trained_model_resume/epoch_snap_05.keras
+
+Epoch 5: val_top1_acc improved from 0.20543 to 0.22255, saving model to /root/autodl-tmp/mcaf_trained_model_resume/best_model.keras
+
+[GPU] Epoch 5 耗时: 309.4s
+[GPU] 显存使用: 当前 3.4 MB, 峰值 6856.5 MB
+[GPU] 近 5 个 epoch 平均耗时: 311.9s
+212/212 [==============================] - 309s 1s/step - loss: 1.6428 - top1_acc: 0.4269 - macro_f1: 0.2942 - val_loss: 3.4497 - val_top1_acc: 0.2226 - val_macro_f1: 0.0890 - lr: 2.5000e-04
+Epoch 6/17
+212/212 [==============================] - ETA: 0s - loss: 1.5910 - top1_acc: 0.4508 - macro_f1: 0.3133  
+Epoch 6: saving model to /root/autodl-tmp/mcaf_trained_model_resume/epoch_snap_06.keras
+
+Epoch 6: val_top1_acc improved from 0.22255 to 0.23849, saving model to /root/autodl-tmp/mcaf_trained_model_resume/best_model.keras
+
+[GPU] Epoch 6 耗时: 309.1s
+[GPU] 显存使用: 当前 3.4 MB, 峰值 6865.4 MB
+[GPU] 近 5 个 epoch 平均耗时: 309.1s
+212/212 [==============================] - 309s 1s/step - loss: 1.5910 - top1_acc: 0.4508 - macro_f1: 0.3133 - val_loss: 3.2920 - val_top1_acc: 0.2385 - val_macro_f1: 0.1034 - lr: 2.5000e-04
+Epoch 7/17
+212/212 [==============================] - ETA: 0s - loss: 1.5621 - top1_acc: 0.4711 - macro_f1: 0.3177  
+Epoch 7: saving model to /root/autodl-tmp/mcaf_trained_model_resume/epoch_snap_07.keras
+
+Epoch 7: val_top1_acc improved from 0.23849 to 0.26564, saving model to /root/autodl-tmp/mcaf_trained_model_resume/best_model.keras
+
+[GPU] Epoch 7 耗时: 309.5s
+[GPU] 显存使用: 当前 3.4 MB, 峰值 6865.4 MB
+[GPU] 近 5 个 epoch 平均耗时: 309.3s
+212/212 [==============================] - 310s 1s/step - loss: 1.5621 - top1_acc: 0.4711 - macro_f1: 0.3177 - val_loss: 2.6470 - val_top1_acc: 0.2656 - val_macro_f1: 0.1294 - lr: 2.5000e-04
+Epoch 8/17
+212/212 [==============================] - ETA: 0s - loss: 1.5621 - top1_acc: 0.4711 - macro_f1: 0.3177  
+Epoch 7: saving model to /root/autodl-tmp/mcaf_trained_model_resume/epoch_snap_07.keras
+
+Epoch 7: val_top1_acc improved from 0.23849 to 0.26564, saving model to /root/autodl-tmp/mcaf_trained_model_resume/best_model.keras
+
+[GPU] Epoch 7 耗时: 309.5s
+[GPU] 显存使用: 当前 3.4 MB, 峰值 6865.4 MB
+[GPU] 近 5 个 epoch 平均耗时: 309.3s
+212/212 [==============================] - 310s 1s/step - loss: 1.5621 - top1_acc: 0.4711 - macro_f1: 0.3177 - val_loss: 2.6470 - val_top1_acc: 0.2656 - val_macro_f1: 0.1294 - lr: 2.5000e-04
+Epoch 8/17
+212/212 [==============================] - ETA: 0s - loss: 1.5194 - top1_acc: 0.4768 - macro_f1: 0.3266  
+Epoch 8: saving model to /root/autodl-tmp/mcaf_trained_model_resume/epoch_snap_08.keras
+
+Epoch 8: val_top1_acc did not improve from 0.26564
+
+[GPU] Epoch 8 耗时: 308.9s
+[GPU] 显存使用: 当前 3.4 MB, 峰值 6865.4 MB
+[GPU] 近 5 个 epoch 平均耗时: 309.4s
+212/212 [==============================] - 309s 1s/step - loss: 1.5194 - top1_acc: 0.4768 - macro_f1: 0.3266 - val_loss: 2.7905 - val_top1_acc: 0.2556 - val_macro_f1: 0.1315 - lr: 2.5000e-04
+Epoch 9/17
+212/212 [==============================] - ETA: 0s - loss: 1.4797 - top1_acc: 0.4905 - macro_f1: 0.3347  
+Epoch 9: saving model to /root/autodl-tmp/mcaf_trained_model_resume/epoch_snap_09.keras
+
+Epoch 9: val_top1_acc did not improve from 0.26564
+
+[GPU] Epoch 9 耗时: 309.4s
+[GPU] 显存使用: 当前 3.4 MB, 峰值 6865.4 MB
+[GPU] 近 5 个 epoch 平均耗时: 309.3s
+212/212 [==============================] - 309s 1s/step - loss: 1.4797 - top1_acc: 0.4905 - macro_f1: 0.3347 - val_loss: 3.0579 - val_top1_acc: 0.2178 - val_macro_f1: 0.1061 - lr: 2.5000e-04
+Epoch 10/17
+212/212 [==============================] - ETA: 0s - loss: 1.4691 - top1_acc: 0.4995 - macro_f1: 0.3487  
+Epoch 10: saving model to /root/autodl-tmp/mcaf_trained_model_resume/epoch_snap_10.keras
+
+Epoch 10: val_top1_acc did not improve from 0.26564
+
+Epoch 10: ReduceLROnPlateau reducing learning rate to 0.0001250000059371814.
+
+[GPU] Epoch 10 耗时: 309.1s
+[GPU] 显存使用: 当前 3.4 MB, 峰值 6865.7 MB
+[GPU] 近 5 个 epoch 平均耗时: 309.2s
+212/212 [==============================] - 309s 1s/step - loss: 1.4691 - top1_acc: 0.4995 - macro_f1: 0.3487 - val_loss: 3.0036 - val_top1_acc: 0.2503 - val_macro_f1: 0.1242 - lr: 2.5000e-04
+Epoch 11/17
+212/212 [==============================] - ETA: 0s - loss: 1.4117 - top1_acc: 0.5174 - macro_f1: 0.3641  
+Epoch 11: saving model to /root/autodl-tmp/mcaf_trained_model_resume/epoch_snap_11.keras
+
+Epoch 11: val_top1_acc improved from 0.26564 to 0.27096, saving model to /root/autodl-tmp/mcaf_trained_model_resume/best_model.keras
+
+[GPU] Epoch 11 耗时: 308.6s
+[GPU] 显存使用: 当前 3.4 MB, 峰值 6865.7 MB
+[GPU] 近 5 个 epoch 平均耗时: 309.1s
+212/212 [==============================] - 309s 1s/step - loss: 1.4117 - top1_acc: 0.5174 - macro_f1: 0.3641 - val_loss: 2.8273 - val_top1_acc: 0.2710 - val_macro_f1: 0.1213 - lr: 1.2500e-04
+Epoch 12/17
+212/212 [==============================] - ETA: 0s - loss: 1.3678 - top1_acc: 0.5332 - macro_f1: 0.3729  
+Epoch 12: saving model to /root/autodl-tmp/mcaf_trained_model_resume/epoch_snap_12.keras
+
+Epoch 12: val_top1_acc improved from 0.27096 to 0.27273, saving model to /root/autodl-tmp/mcaf_trained_model_resume/best_model.keras
+
+[GPU] Epoch 12 耗时: 308.6s
+[GPU] 显存使用: 当前 3.4 MB, 峰值 6865.7 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.9s
+212/212 [==============================] - 309s 1s/step - loss: 1.3678 - top1_acc: 0.5332 - macro_f1: 0.3729 - val_loss: 2.8027 - val_top1_acc: 0.2727 - val_macro_f1: 0.1202 - lr: 1.2500e-04
+Epoch 13/17
+212/212 [==============================] - ETA: 0s - loss: 1.3582 - top1_acc: 0.5372 - macro_f1: 0.3786  
+Epoch 13: saving model to /root/autodl-tmp/mcaf_trained_model_resume/epoch_snap_13.keras
+
+Epoch 13: val_top1_acc improved from 0.27273 to 0.28040, saving model to /root/autodl-tmp/mcaf_trained_model_resume/best_model.keras
+
+Epoch 13: ReduceLROnPlateau reducing learning rate to 6.25000029685907e-05.
+
+[GPU] Epoch 13 耗时: 308.6s
+[GPU] 显存使用: 当前 3.4 MB, 峰值 6865.7 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.9s
+212/212 [==============================] - 309s 1s/step - loss: 1.3582 - top1_acc: 0.5372 - macro_f1: 0.3786 - val_loss: 2.8330 - val_top1_acc: 0.2804 - val_macro_f1: 0.1250 - lr: 1.2500e-04
+Epoch 14/17
+212/212 [==============================] - ETA: 0s - loss: 1.3267 - top1_acc: 0.5449 - macro_f1: 0.3824  
+Epoch 14: saving model to /root/autodl-tmp/mcaf_trained_model_resume/epoch_snap_14.keras
+
+Epoch 14: val_top1_acc improved from 0.28040 to 0.28867, saving model to /root/autodl-tmp/mcaf_trained_model_resume/best_model.keras
+
+[GPU] Epoch 14 耗时: 308.8s
+[GPU] 显存使用: 当前 3.4 MB, 峰值 6865.7 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.7s
+212/212 [==============================] - 309s 1s/step - loss: 1.3267 - top1_acc: 0.5449 - macro_f1: 0.3824 - val_loss: 2.5653 - val_top1_acc: 0.2887 - val_macro_f1: 0.1420 - lr: 6.2500e-05
+Epoch 15/17
+212/212 [==============================] - ETA: 0s - loss: 1.3251 - top1_acc: 0.5472 - macro_f1: 0.3875  
+Epoch 15: saving model to /root/autodl-tmp/mcaf_trained_model_resume/epoch_snap_15.keras
+
+Epoch 15: val_top1_acc did not improve from 0.28867
+
+[GPU] Epoch 15 耗时: 308.7s
+[GPU] 显存使用: 当前 3.4 MB, 峰值 6865.7 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.7s
+212/212 [==============================] - 309s 1s/step - loss: 1.3251 - top1_acc: 0.5472 - macro_f1: 0.3875 - val_loss: 2.7833 - val_top1_acc: 0.2769 - val_macro_f1: 0.1216 - lr: 6.2500e-05
+Epoch 16/17
+212/212 [==============================] - ETA: 0s - loss: 1.3152 - top1_acc: 0.5476 - macro_f1: 0.3878  
+Epoch 16: saving model to /root/autodl-tmp/mcaf_trained_model_resume/epoch_snap_16.keras
+
+Epoch 16: val_top1_acc did not improve from 0.28867
+
+[GPU] Epoch 16 耗时: 308.7s
+[GPU] 显存使用: 当前 3.4 MB, 峰值 6865.7 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.7s
+212/212 [==============================] - 309s 1s/step - loss: 1.3152 - top1_acc: 0.5476 - macro_f1: 0.3878 - val_loss: 3.0435 - val_top1_acc: 0.2674 - val_macro_f1: 0.1158 - lr: 6.2500e-05
+Epoch 17/17
+212/212 [==============================] - ETA: 0s - loss: 1.3014 - top1_acc: 0.5541 - macro_f1: 0.3895  
+Epoch 17: saving model to /root/autodl-tmp/mcaf_trained_model_resume/epoch_snap_17.keras
+
+Epoch 17: val_top1_acc did not improve from 0.28867
+
+Epoch 17: ReduceLROnPlateau reducing learning rate to 3.125000148429535e-05.
+
+[GPU] Epoch 17 耗时: 308.6s
+[GPU] 显存使用: 当前 3.4 MB, 峰值 6865.7 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.7s
+212/212 [==============================] - 309s 1s/step - loss: 1.3014 - top1_acc: 0.5541 - macro_f1: 0.3895 - val_loss: 2.6641 - val_top1_acc: 0.2881 - val_macro_f1: 0.1407 - lr: 6.2500e-05
+
+==================================================
+最终评估
+==================================================
+加载最佳模型: /root/autodl-tmp/mcaf_trained_model_resume/best_model.keras
+53/53 [==============================] - 26s 471ms/step - loss: 2.5653 - top1_acc: 0.2887 - macro_f1: 0.1420
+
+验证集 Loss: 2.5653
+验证集 Top-1 准确率: 0.2887
+验证集 Macro F1: 0.1420
+
+训练日志已保存到: /root/autodl-tmp/mcaf_trained_model_resume/train_log.json
+root@autodl-container-xy038apcsf-f6d4625e:~/autodl-tmp/BirdNET-Analyzer-main-mcaf# 

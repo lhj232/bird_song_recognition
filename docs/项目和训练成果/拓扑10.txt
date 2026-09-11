@@ -1,0 +1,227 @@
+ rm -rf ./experiments/mamba_10class_small_topo
+
+python src/run.py --run_type train \
+  --dataset birdclef \
+  --n_class 10 \
+  --data-train ./data/datafiles/birdclef_train_data.json \
+  --data-val ./data/datafiles/birdclef_valid_data.json \
+  --label-csv ./data/birdclef_labels.csv \
+  --n-epochs 30 \
+  --batch-size 16 \
+  --loss BCE \
+  --lr 0.00025 \
+  --model aum \
+  --model_type small \
+  --aum_type Bi-Bi \
+  --audio_length 512 \
+  --melbins 128 \
+  --num-workers 0 \
+  --exp-dir ./experiments/mamba_10class_small_topo
+I am process 496, running on localhost: starting (Mon Jul 27 10:28:47 2026)
+balanced sampler is not used
+---------------the train dataloader---------------
+now using following mask: 0 freq, 0 time
+now using mix-up with rate 0.000000
+now process birdclef
+use dataset mean -4.268 and std 4.569 to normalize the input.
+number of classes is 10
+---------------the evaluation dataloader---------------
+now using following mask: 0 freq, 0 time
+now using mix-up with rate 0.000000
+now process birdclef
+use dataset mean -4.268 and std 4.569 to normalize the input.
+number of classes is 10
+Model: AudioMamba (AUM)
+Resize function is resample_patch_embed
+Initializing FlexiPatchEmbed with the following parameters:
+patch_size=(16, 16), in_chans=1, embed_dim=384, bias=True, norm_layer=None, flatten=True, proj_load=None, resize_func=resample_patch_embed
+The resize function is resample_patch_embed
+Precomputed weights for []
+Initializing FlexiPosEmbed with the following parameters:
+input_size=(128, 512), pos_grid_size=(12, 50), embed_dim=384, pos_embed_load=None, pos_grid_size_load=(-1, -1), n_prefix_tokens=1, pos_embed_prefix=True
+
+Creating experiment directory: ./experiments/mamba_10class_small_topo
+Now starting training for 30 epochs
+Total parameter number is : 23.475 million
+Total trainable parameter number is : 23.475 million
+now training with birdclef, main metrics: None, loss function: BCEWithLogitsLoss(), learning rate scheduler: <torch.optim.lr_scheduler.MultiStepLR object at 0x7b3bc46fa710>
+The learning rate scheduler starts at 2 epoch with decay rate of 0.500 every 1 epochs
+current #steps=0, #epochs=1
+start training...
+---------------
+2026-07-27 10:28:48.103986
+current #epochs=1, #steps=0
+100%|██████████████████████████████████████████████████████████| 423/423 [03:59<00:00,  1.77it/s, Epoch=1, T_Loss=0.286]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:23<00:00,  2.21it/s]
+acc: 0.427981
+AUC: 0.742792
+Avg Precision: 0.191085
+Avg Recall: 0.727581
+d_prime: 0.922033
+train_loss: 0.285741
+valid_loss: 0.728103
+validation finished
+Epoch-1 lr: 0.00025
+---------------
+2026-07-27 10:33:12.170980
+current #epochs=2, #steps=423
+100%|██████████████████████████████████████████████████████████| 423/423 [18:54<00:00,  2.68s/it, Epoch=2, T_Loss=0.223]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [01:14<00:00,  1.40s/it]
+acc: 0.595041
+AUC: 0.832945
+Avg Precision: 0.215266
+Avg Recall: 0.831550
+d_prime: 1.365946
+train_loss: 0.223291
+valid_loss: 0.704677
+validation finished
+Epoch-2 lr: 0.00025
+Epoch 2: Topo weight = 0.008200
+---------------
+2026-07-27 10:53:21.215645
+current #epochs=3, #steps=846
+100%|██████████████████████████████████████████████████████████| 423/423 [24:32<00:00,  3.48s/it, Epoch=3, T_Loss=0.161]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [01:00<00:00,  1.14s/it]
+acc: 0.674734
+AUC: 0.892569
+Avg Precision: 0.226534
+Avg Recall: 0.897076
+d_prime: 1.754060
+train_loss: 0.160978
+valid_loss: 0.695392
+validation finished
+Epoch-3 lr: 0.000125
+Epoch 3: Topo weight = 0.007300
+---------------
+2026-07-27 11:18:54.766772
+current #epochs=4, #steps=1269
+100%|██████████████████████████████████████████████████████████| 423/423 [15:58<00:00,  2.26s/it, Epoch=4, T_Loss=0.106]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:33<00:00,  1.60it/s]
+acc: 0.723731
+AUC: 0.906440
+Avg Precision: 0.229827
+Avg Recall: 0.900242
+d_prime: 1.865557
+train_loss: 0.105658
+valid_loss: 0.688209
+validation finished
+Epoch-4 lr: 6.25e-05
+Epoch 4: Topo weight = 0.006400
+---------------
+2026-07-27 11:35:26.411352
+current #epochs=5, #steps=1692
+100%|█████████████████████████████████████████████████████████| 423/423 [13:48<00:00,  1.96s/it, Epoch=5, T_Loss=0.0665]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:29<00:00,  1.77it/s]
+acc: 0.745573
+AUC: 0.914804
+Avg Precision: 0.230836
+Avg Recall: 0.926458
+d_prime: 1.938811
+train_loss: 0.066472
+valid_loss: 0.685330
+validation finished
+Epoch-5 lr: 3.125e-05
+Epoch 5: Topo weight = 0.005500
+---------------
+2026-07-27 11:49:45.367329
+current #epochs=6, #steps=2115
+100%|█████████████████████████████████████████████████████████| 423/423 [19:12<00:00,  2.72s/it, Epoch=6, T_Loss=0.0441]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:31<00:00,  1.66it/s]
+acc: 0.751476
+AUC: 0.919284
+Avg Precision: 0.229107
+Avg Recall: 0.925663
+d_prime: 1.980281
+train_loss: 0.044138
+valid_loss: 0.684023
+validation finished
+Epoch-6 lr: 1.5625e-05
+Epoch 6: Topo weight = 0.004600
+---------------
+2026-07-27 12:09:29.764461
+current #epochs=7, #steps=2538
+100%|██████████████████████████████████████████████████████████| 423/423 [15:41<00:00,  2.23s/it, Epoch=7, T_Loss=0.033]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [01:17<00:00,  1.46s/it]
+acc: 0.753247
+AUC: 0.924994
+Avg Precision: 0.230020
+Avg Recall: 0.947101
+d_prime: 2.035748
+train_loss: 0.032998
+valid_loss: 0.683517
+validation finished
+Epoch-7 lr: 7.8125e-06
+Epoch 7: Topo weight = 0.003700
+---------------
+2026-07-27 12:26:28.703302
+current #epochs=8, #steps=2961
+100%|█████████████████████████████████████████████████████████| 423/423 [27:58<00:00,  3.97s/it, Epoch=8, T_Loss=0.0273]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:51<00:00,  1.02it/s]
+acc: 0.754427
+AUC: 0.926207
+Avg Precision: 0.229260
+Avg Recall: 0.949248
+d_prime: 2.047936
+train_loss: 0.027292
+valid_loss: 0.683132
+validation finished
+Epoch-8 lr: 3.90625e-06
+Epoch 8: Topo weight = 0.002800
+---------------
+2026-07-27 12:55:19.689305
+current #epochs=9, #steps=3384
+100%|█████████████████████████████████████████████████████████| 423/423 [22:24<00:00,  3.18s/it, Epoch=9, T_Loss=0.0244]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:50<00:00,  1.05it/s]
+acc: 0.753837
+AUC: 0.928971
+Avg Precision: 0.229062
+Avg Recall: 0.950155
+d_prime: 2.076302
+train_loss: 0.024421
+valid_loss: 0.683351
+validation finished
+Epoch-9 lr: 1.953125e-06
+Epoch 9: Topo weight = 0.001900
+---------------
+2026-07-27 13:18:32.714508
+current #epochs=10, #steps=3807
+100%|████████████████████████████████████████████████████████| 423/423 [25:03<00:00,  3.55s/it, Epoch=10, T_Loss=0.0231]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:36<00:00,  1.45it/s]
+acc: 0.752656
+AUC: 0.927605
+Avg Precision: 0.229160
+Avg Recall: 0.948945
+d_prime: 2.062179
+train_loss: 0.023052
+valid_loss: 0.683163
+validation finished
+Epoch-10 lr: 9.765625e-07
+Epoch 10: Topo weight = 0.001000
+---------------
+2026-07-27 13:44:13.280415
+current #epochs=11, #steps=4230
+ 14%|████████                                                 | 60/423 [02:05<12:38,  2.09s/it, Epoch=11, T_Loss=0.0225]^C
+Traceback (most recent call last):
+  File "/home/averie/Audio-Mamba-AuM/src/run.py", line 287, in <module>
+    train(audio_model, train_loader, val_loader, args)
+  File "/home/averie/Audio-Mamba-AuM/src/traintest.py", line 168, in train
+    topo_loss_val = topo_loss_fn(embeddings)
+  File "/home/averie/miniconda/envs/aum/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/averie/miniconda/envs/aum/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/averie/Audio-Mamba-AuM/src/topological_loss.py", line 111, in forward
+    betti_0, betti_1 = self._compute_betti_via_ripser(embeddings)
+  File "/home/averie/Audio-Mamba-AuM/src/topological_loss.py", line 47, in _compute_betti_via_ripser
+    x = embeddings.detach().cpu().numpy()
+KeyboardInterrupt

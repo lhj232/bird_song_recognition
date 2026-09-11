@@ -1,0 +1,284 @@
++-----------------------------------------------AutoDL-----------------------------------------------------+
+目录说明:
+╔═════════════════╦════════╦════╦═════════════════════════════════════════════════════════════════════════╗
+║目录             ║名称    ║速度║说明                                                                     ║
+╠═════════════════╬════════╬════╬═════════════════════════════════════════════════════════════════════════╣
+║/                ║系 统 盘║一般║实例关机数据不会丢失，可存放代码等。会随保存镜像一起保存。               ║
+║/root/autodl-tmp ║数 据 盘║ 快 ║实例关机数据不会丢失，可存放读写IO要求高的数据。但不会随保存镜像一起保存 ║
+║/root/autodl-fs  ║文件存储║一般║可以实现多实例间的文件同步共享，不受实例开关机和保存镜像的影响。         ║
+╚═════════════════╩════════╩════╩═════════════════════════════════════════════════════════════════════════╝
+CPU ：16 核心
+内存：60 GB
+GPU ：NVIDIA GeForce RTX 4090 D, 1
+存储：
+  系 统 盘/               ：9% 2.5G/30G
+  数 据 盘/root/autodl-tmp：10% 4.6G/50G
+  文件存储/root/autodl-fs ：1% 2.0G/200G
++----------------------------------------------------------------------------------------------------------+
+*注意: 
+1.系统盘较小请将大的数据存放于数据盘或文件存储中，重置系统时数据盘和文件存储中的数据不受影响
+2.清理系统盘请参考：https://www.autodl.com/docs/qa1/
+3.终端中长期执行命令请使用screen等工具开后台运行，确保程序不受SSH连接中断影响：https://www.autodl.com/docs/daemon/
+root@autodl-container-xy038apcsf-f6d4625e:~# cd /root/autodl-tmp/BirdNET-Analyzer-main-mcaf
+root@autodl-container-xy038apcsf-f6d4625e:~/autodl-tmp/BirdNET-Analyzer-main-mcaf# python train_baseline.py
+2026-06-20 15:24:37.741588: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F AVX512_VNNI FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-20 15:24:37.865999: I tensorflow/core/util/util.cc:169] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-06-20 15:24:37.910639: E tensorflow/stream_executor/cuda/cuda_blas.cc:2981] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-20 15:24:38.551773: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/nvidia/lib:/usr/local/nvidia/lib64
+2026-06-20 15:24:38.551844: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/nvidia/lib:/usr/local/nvidia/lib64
+2026-06-20 15:24:38.551853: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+[GPU] 检测到 1 个 GPU 设备:
+  - /physical_device:GPU:0
+[GPU] 已启用显存按需增长策略
+检测到物种总数：10
+物种列表： ['asbfly', 'ashdro1', 'ashpri1', 'ashwoo2', 'asikoe2', 'asiope1', 'aspfly1', 'aspswi1', 'barfly1', 'barswa']
+/root/miniconda3/lib/python3.8/site-packages/librosa/feature/spectral.py:2148: UserWarning: Empty filters detected in mel frequency basis. Some channels will produce empty responses. Try increasing your sampling rate (and fmax) or reducing n_mels.
+  mel_basis = filters.mel(sr=sr, n_fft=n_fft, **kwargs)
+2026-06-20 15:25:17.021765: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F AVX512_VNNI FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-20 15:25:17.161006: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:42] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+2026-06-20 15:25:17.161062: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 22188 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 4090 D, pci bus id: 0000:d6:00.0, compute capability: 8.9
+梅尔帧数（时间维度）：282
+Model: "model_1"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_1 (InputLayer)        [(None, 96, 282)]         0         
+                                                                 
+ model (Functional)          (None, 128)               93568     
+                                                                 
+ dense (Dense)               (None, 256)               33024     
+                                                                 
+ dropout_1 (Dropout)         (None, 256)               0         
+                                                                 
+ dense_1 (Dense)             (None, 10)                2570      
+                                                                 
+=================================================================
+Total params: 129,162
+Trainable params: 128,714
+Non-trainable params: 448
+_________________________________________________________________
+Traceback (most recent call last):
+  File "train_baseline.py", line 247, in <module>
+    main()
+  File "train_baseline.py", line 187, in main
+    tf.keras.metrics.F1Score(average="macro", name="macro_f1"),
+AttributeError: module 'keras.api._v2.keras.metrics' has no attribute 'F1Score'
+root@autodl-container-xy038apcsf-f6d4625e:~/autodl-tmp/BirdNET-Analyzer-main-mcaf# python train_baseline.py
+2026-06-20 15:27:39.695645: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F AVX512_VNNI FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-20 15:27:39.824241: I tensorflow/core/util/util.cc:169] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-06-20 15:27:39.861656: E tensorflow/stream_executor/cuda/cuda_blas.cc:2981] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-20 15:27:40.515239: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/nvidia/lib:/usr/local/nvidia/lib64
+2026-06-20 15:27:40.515335: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/nvidia/lib:/usr/local/nvidia/lib64
+2026-06-20 15:27:40.515347: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+Traceback (most recent call last):
+  File "train_baseline.py", line 53, in <module>
+    model.compile(
+NameError: name 'model' is not defined
+root@autodl-container-xy038apcsf-f6d4625e:~/autodl-tmp/BirdNET-Analyzer-main-mcaf# python train_baseline.py
+2026-06-20 15:29:40.278109: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F AVX512_VNNI FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-20 15:29:40.403534: I tensorflow/core/util/util.cc:169] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-06-20 15:29:40.440948: E tensorflow/stream_executor/cuda/cuda_blas.cc:2981] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-20 15:29:41.077809: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/nvidia/lib:/usr/local/nvidia/lib64
+2026-06-20 15:29:41.077879: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/nvidia/lib:/usr/local/nvidia/lib64
+2026-06-20 15:29:41.077889: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+[GPU] 检测到 1 个 GPU 设备:
+  - /physical_device:GPU:0
+[GPU] 已启用显存按需增长策略
+检测到物种总数：10
+物种列表： ['asbfly', 'ashdro1', 'ashpri1', 'ashwoo2', 'asikoe2', 'asiope1', 'aspfly1', 'aspswi1', 'barfly1', 'barswa']
+/root/miniconda3/lib/python3.8/site-packages/librosa/feature/spectral.py:2148: UserWarning: Empty filters detected in mel frequency basis. Some channels will produce empty responses. Try increasing your sampling rate (and fmax) or reducing n_mels.
+  mel_basis = filters.mel(sr=sr, n_fft=n_fft, **kwargs)
+2026-06-20 15:30:09.561583: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F AVX512_VNNI FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-20 15:30:09.709207: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:42] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+2026-06-20 15:30:09.709262: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 22188 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 4090 D, pci bus id: 0000:d6:00.0, compute capability: 8.9
+梅尔帧数（时间维度）：282
+Model: "model_1"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_1 (InputLayer)        [(None, 96, 282)]         0         
+                                                                 
+ model (Functional)          (None, 128)               93568     
+                                                                 
+ dense (Dense)               (None, 256)               33024     
+                                                                 
+ dropout_1 (Dropout)         (None, 256)               0         
+                                                                 
+ dense_1 (Dense)             (None, 10)                2570      
+                                                                 
+=================================================================
+Total params: 129,162
+Trainable params: 128,714
+Non-trainable params: 448
+_________________________________________________________________
+
+开始训练基线模型 25 个 epoch...
+Epoch 1/25
+2026-06-20 15:30:19.739592: I tensorflow/stream_executor/cuda/cuda_dnn.cc:384] Loaded cuDNN version 8600
+2026-06-20 15:30:19.979195: I tensorflow/stream_executor/cuda/cuda_blas.cc:1614] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+106/106 [==============================] - ETA: 0s - loss: 1.7391 - top1_acc: 0.3978 - macro_f1: 0.2768  
+Epoch 1: val_top1_acc improved from -inf to 0.21783, saving model to /root/autodl-tmp/baseline_trained_model/best_model.keras
+
+Epoch 1: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_01.keras
+106/106 [==============================] - 4s 20ms/step - loss: 1.7391 - top1_acc: 0.3978 - macro_f1: 0.2768 - val_loss: 2.4145 - val_top1_acc: 0.2178 - val_macro_f1: 0.0753 - lr: 5.0000e-04
+Epoch 2/25
+102/106 [===========================>..] - ETA: 0s - loss: 1.3304 - top1_acc: 0.5458 - macro_f1: 0.3775
+Epoch 2: val_top1_acc improved from 0.21783 to 0.26446, saving model to /root/autodl-tmp/baseline_trained_model/best_model.keras
+
+Epoch 2: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_02.keras
+106/106 [==============================] - 1s 14ms/step - loss: 1.3297 - top1_acc: 0.5458 - macro_f1: 0.3773 - val_loss: 2.1760 - val_top1_acc: 0.2645 - val_macro_f1: 0.1536 - lr: 5.0000e-04
+Epoch 3/25
+105/106 [============================>.] - ETA: 0s - loss: 1.1867 - top1_acc: 0.5938 - macro_f1: 0.4265
+Epoch 3: val_top1_acc improved from 0.26446 to 0.52479, saving model to /root/autodl-tmp/baseline_trained_model/best_model.keras
+
+Epoch 3: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_03.keras
+106/106 [==============================] - 1s 14ms/step - loss: 1.1854 - top1_acc: 0.5944 - macro_f1: 0.4268 - val_loss: 1.3811 - val_top1_acc: 0.5248 - val_macro_f1: 0.3686 - lr: 5.0000e-04
+Epoch 4/25
+102/106 [===========================>..] - ETA: 0s - loss: 1.0690 - top1_acc: 0.6443 - macro_f1: 0.4858
+Epoch 4: val_top1_acc improved from 0.52479 to 0.65112, saving model to /root/autodl-tmp/baseline_trained_model/best_model.keras
+
+Epoch 4: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_04.keras
+106/106 [==============================] - 1s 14ms/step - loss: 1.0664 - top1_acc: 0.6441 - macro_f1: 0.4863 - val_loss: 1.1136 - val_top1_acc: 0.6511 - val_macro_f1: 0.5036 - lr: 5.0000e-04
+Epoch 5/25
+106/106 [==============================] - ETA: 0s - loss: 0.9726 - top1_acc: 0.6717 - macro_f1: 0.5108
+Epoch 5: val_top1_acc improved from 0.65112 to 0.67237, saving model to /root/autodl-tmp/baseline_trained_model/best_model.keras
+
+Epoch 5: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_05.keras
+106/106 [==============================] - 1s 13ms/step - loss: 0.9726 - top1_acc: 0.6717 - macro_f1: 0.5108 - val_loss: 0.9881 - val_top1_acc: 0.6724 - val_macro_f1: 0.5087 - lr: 5.0000e-04
+Epoch 6/25
+101/106 [===========================>..] - ETA: 0s - loss: 0.8962 - top1_acc: 0.7054 - macro_f1: 0.5482
+Epoch 6: val_top1_acc improved from 0.67237 to 0.71429, saving model to /root/autodl-tmp/baseline_trained_model/best_model.keras
+
+Epoch 6: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_06.keras
+106/106 [==============================] - 1s 14ms/step - loss: 0.8926 - top1_acc: 0.7073 - macro_f1: 0.5496 - val_loss: 0.8819 - val_top1_acc: 0.7143 - val_macro_f1: 0.5778 - lr: 5.0000e-04
+Epoch 7/25
+101/106 [===========================>..] - ETA: 0s - loss: 0.8435 - top1_acc: 0.7181 - macro_f1: 0.5651
+Epoch 7: val_top1_acc did not improve from 0.71429
+
+Epoch 7: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_07.keras
+106/106 [==============================] - 1s 14ms/step - loss: 0.8418 - top1_acc: 0.7186 - macro_f1: 0.5650 - val_loss: 0.8870 - val_top1_acc: 0.7048 - val_macro_f1: 0.5525 - lr: 5.0000e-04
+Epoch 8/25
+105/106 [============================>.] - ETA: 0s - loss: 0.7773 - top1_acc: 0.7464 - macro_f1: 0.5919
+Epoch 8: val_top1_acc improved from 0.71429 to 0.74970, saving model to /root/autodl-tmp/baseline_trained_model/best_model.keras
+
+Epoch 8: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_08.keras
+106/106 [==============================] - 1s 13ms/step - loss: 0.7783 - top1_acc: 0.7461 - macro_f1: 0.5914 - val_loss: 0.7964 - val_top1_acc: 0.7497 - val_macro_f1: 0.5969 - lr: 5.0000e-04
+Epoch 9/25
+105/106 [============================>.] - ETA: 0s - loss: 0.7279 - top1_acc: 0.7612 - macro_f1: 0.6254
+Epoch 9: val_top1_acc did not improve from 0.74970
+
+Epoch 9: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_09.keras
+106/106 [==============================] - 1s 13ms/step - loss: 0.7282 - top1_acc: 0.7612 - macro_f1: 0.6262 - val_loss: 0.8262 - val_top1_acc: 0.7237 - val_macro_f1: 0.6095 - lr: 5.0000e-04
+Epoch 10/25
+106/106 [==============================] - ETA: 0s - loss: 0.6859 - top1_acc: 0.7722 - macro_f1: 0.6368
+Epoch 10: val_top1_acc improved from 0.74970 to 0.77450, saving model to /root/autodl-tmp/baseline_trained_model/best_model.keras
+
+Epoch 10: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_10.keras
+106/106 [==============================] - 1s 14ms/step - loss: 0.6859 - top1_acc: 0.7722 - macro_f1: 0.6368 - val_loss: 0.6793 - val_top1_acc: 0.7745 - val_macro_f1: 0.6530 - lr: 5.0000e-04
+Epoch 11/25
+106/106 [==============================] - ETA: 0s - loss: 0.6415 - top1_acc: 0.7927 - macro_f1: 0.6688
+Epoch 11: val_top1_acc improved from 0.77450 to 0.80342, saving model to /root/autodl-tmp/baseline_trained_model/best_model.keras
+
+Epoch 11: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_11.keras
+106/106 [==============================] - 1s 14ms/step - loss: 0.6415 - top1_acc: 0.7927 - macro_f1: 0.6688 - val_loss: 0.6457 - val_top1_acc: 0.8034 - val_macro_f1: 0.6875 - lr: 5.0000e-04
+Epoch 12/25
+103/106 [============================>.] - ETA: 0s - loss: 0.6099 - top1_acc: 0.8011 - macro_f1: 0.6753
+Epoch 12: val_top1_acc did not improve from 0.80342
+
+Epoch 12: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_12.keras
+106/106 [==============================] - 1s 14ms/step - loss: 0.6101 - top1_acc: 0.8010 - macro_f1: 0.6743 - val_loss: 0.8941 - val_top1_acc: 0.6924 - val_macro_f1: 0.6013 - lr: 5.0000e-04
+Epoch 13/25
+105/106 [============================>.] - ETA: 0s - loss: 0.5720 - top1_acc: 0.8165 - macro_f1: 0.6915
+Epoch 13: val_top1_acc did not improve from 0.80342
+
+Epoch 13: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_13.keras
+106/106 [==============================] - 1s 13ms/step - loss: 0.5715 - top1_acc: 0.8169 - macro_f1: 0.6925 - val_loss: 0.7824 - val_top1_acc: 0.7503 - val_macro_f1: 0.6443 - lr: 5.0000e-04
+Epoch 14/25
+105/106 [============================>.] - ETA: 0s - loss: 0.5435 - top1_acc: 0.8211 - macro_f1: 0.7031
+Epoch 14: val_top1_acc improved from 0.80342 to 0.82113, saving model to /root/autodl-tmp/baseline_trained_model/best_model.keras
+
+Epoch 14: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_14.keras
+106/106 [==============================] - 1s 14ms/step - loss: 0.5451 - top1_acc: 0.8207 - macro_f1: 0.7027 - val_loss: 0.5701 - val_top1_acc: 0.8211 - val_macro_f1: 0.7088 - lr: 5.0000e-04
+Epoch 15/25
+101/106 [===========================>..] - ETA: 0s - loss: 0.5286 - top1_acc: 0.8261 - macro_f1: 0.7061
+Epoch 15: val_top1_acc did not improve from 0.82113
+
+Epoch 15: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_15.keras
+106/106 [==============================] - 1s 13ms/step - loss: 0.5259 - top1_acc: 0.8274 - macro_f1: 0.7076 - val_loss: 0.5921 - val_top1_acc: 0.8111 - val_macro_f1: 0.7103 - lr: 5.0000e-04
+Epoch 16/25
+106/106 [==============================] - ETA: 0s - loss: 0.4843 - top1_acc: 0.8400 - macro_f1: 0.7262
+Epoch 16: val_top1_acc did not improve from 0.82113
+
+Epoch 16: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_16.keras
+106/106 [==============================] - 1s 14ms/step - loss: 0.4843 - top1_acc: 0.8400 - macro_f1: 0.7262 - val_loss: 0.5670 - val_top1_acc: 0.8194 - val_macro_f1: 0.7121 - lr: 5.0000e-04
+Epoch 17/25
+106/106 [==============================] - ETA: 0s - loss: 0.4571 - top1_acc: 0.8530 - macro_f1: 0.7341
+Epoch 17: val_top1_acc did not improve from 0.82113
+
+Epoch 17: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_17.keras
+106/106 [==============================] - 1s 14ms/step - loss: 0.4571 - top1_acc: 0.8530 - macro_f1: 0.7341 - val_loss: 0.5733 - val_top1_acc: 0.8164 - val_macro_f1: 0.7119 - lr: 5.0000e-04
+Epoch 18/25
+103/106 [============================>.] - ETA: 0s - loss: 0.4608 - top1_acc: 0.8498 - macro_f1: 0.7356
+Epoch 18: val_top1_acc did not improve from 0.82113
+
+Epoch 18: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_18.keras
+106/106 [==============================] - 1s 13ms/step - loss: 0.4602 - top1_acc: 0.8500 - macro_f1: 0.7370 - val_loss: 0.8353 - val_top1_acc: 0.7403 - val_macro_f1: 0.6600 - lr: 5.0000e-04
+Epoch 19/25
+106/106 [==============================] - ETA: 0s - loss: 0.4415 - top1_acc: 0.8524 - macro_f1: 0.7416
+Epoch 19: val_top1_acc did not improve from 0.82113
+
+Epoch 19: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_19.keras
+
+Epoch 19: ReduceLROnPlateau reducing learning rate to 0.0002500000118743628.
+106/106 [==============================] - 1s 13ms/step - loss: 0.4415 - top1_acc: 0.8524 - macro_f1: 0.7416 - val_loss: 0.5945 - val_top1_acc: 0.7987 - val_macro_f1: 0.7011 - lr: 5.0000e-04
+Epoch 20/25
+104/106 [============================>.] - ETA: 0s - loss: 0.3657 - top1_acc: 0.8837 - macro_f1: 0.7821
+Epoch 20: val_top1_acc improved from 0.82113 to 0.83117, saving model to /root/autodl-tmp/baseline_trained_model/best_model.keras
+
+Epoch 20: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_20.keras
+106/106 [==============================] - 2s 14ms/step - loss: 0.3651 - top1_acc: 0.8838 - macro_f1: 0.7822 - val_loss: 0.5249 - val_top1_acc: 0.8312 - val_macro_f1: 0.7332 - lr: 2.5000e-04
+Epoch 21/25
+103/106 [============================>.] - ETA: 0s - loss: 0.3319 - top1_acc: 0.8920 - macro_f1: 0.7848
+Epoch 21: val_top1_acc improved from 0.83117 to 0.84829, saving model to /root/autodl-tmp/baseline_trained_model/best_model.keras
+
+Epoch 21: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_21.keras
+106/106 [==============================] - 1s 14ms/step - loss: 0.3351 - top1_acc: 0.8905 - macro_f1: 0.7835 - val_loss: 0.4920 - val_top1_acc: 0.8483 - val_macro_f1: 0.7499 - lr: 2.5000e-04
+Epoch 22/25
+101/106 [===========================>..] - ETA: 0s - loss: 0.3165 - top1_acc: 0.8963 - macro_f1: 0.7977
+Epoch 22: val_top1_acc improved from 0.84829 to 0.86009, saving model to /root/autodl-tmp/baseline_trained_model/best_model.keras
+
+Epoch 22: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_22.keras
+106/106 [==============================] - 1s 14ms/step - loss: 0.3159 - top1_acc: 0.8970 - macro_f1: 0.7988 - val_loss: 0.4452 - val_top1_acc: 0.8601 - val_macro_f1: 0.7529 - lr: 2.5000e-04
+Epoch 23/25
+101/106 [===========================>..] - ETA: 0s - loss: 0.3150 - top1_acc: 0.9024 - macro_f1: 0.7915
+Epoch 23: val_top1_acc did not improve from 0.86009
+
+Epoch 23: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_23.keras
+106/106 [==============================] - 1s 13ms/step - loss: 0.3114 - top1_acc: 0.9038 - macro_f1: 0.7944 - val_loss: 0.4879 - val_top1_acc: 0.8483 - val_macro_f1: 0.7843 - lr: 2.5000e-04
+Epoch 24/25
+105/106 [============================>.] - ETA: 0s - loss: 0.3034 - top1_acc: 0.8990 - macro_f1: 0.8206
+Epoch 24: val_top1_acc did not improve from 0.86009
+
+Epoch 24: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_24.keras
+106/106 [==============================] - 1s 13ms/step - loss: 0.3032 - top1_acc: 0.8990 - macro_f1: 0.8206 - val_loss: 0.5603 - val_top1_acc: 0.8264 - val_macro_f1: 0.7290 - lr: 2.5000e-04
+Epoch 25/25
+106/106 [==============================] - ETA: 0s - loss: 0.2913 - top1_acc: 0.9072 - macro_f1: 0.8268
+Epoch 25: val_top1_acc did not improve from 0.86009
+
+Epoch 25: saving model to /root/autodl-tmp/baseline_trained_model/epoch_snap_25.keras
+
+Epoch 25: ReduceLROnPlateau reducing learning rate to 0.0001250000059371814.
+106/106 [==============================] - 1s 13ms/step - loss: 0.2913 - top1_acc: 0.9072 - macro_f1: 0.8268 - val_loss: 0.4761 - val_top1_acc: 0.8483 - val_macro_f1: 0.7828 - lr: 2.5000e-04
+
+========== 基线模型最终验证指标 ==========
+验证集 Loss: 0.4452
+验证集 Top-1 准确率：0.8601
+验证集 Macro-F1：0.7529
+
+训练日志已保存到: /root/autodl-tmp/baseline_trained_model/train_log.json
+root@autodl-container-xy038apcsf-f6d4625e:~/autodl-tmp/BirdNET-Analyzer-main-mcaf# 

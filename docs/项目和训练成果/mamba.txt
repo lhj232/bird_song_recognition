@@ -1,0 +1,688 @@
+current #steps=0, #epochs=1
+start training...
+---------------
+2026-07-23 15:32:43.647173
+current #epochs=1, #steps=0
+  0%|                                                                                           | 0/423 [00:00<?, ?it/s]/home/averie/Audio-Mamba-AuM/src/utilities/tokenization.py:306: UserWarning: Applied workaround for CuDNN issue, install nvrtc.so (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:80.)
+  x = F.conv2d(x, weight, bias=bias, stride=strides)
+100%|██████████████████████████████████████████████████████████| 423/423 [01:01<00:00,  6.85it/s, Epoch=1, T_Loss=0.301]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:11<00:00,  4.62it/s]
+acc: 0.314640
+AUC: 0.630051
+Avg Precision: 0.154400
+Avg Recall: 0.563689
+d_prime: 0.469501
+train_loss: 0.300603
+valid_loss: 0.730534
+validation finished
+Epoch-1 lr: 0.00025
+---------------
+2026-07-23 15:33:57.660729
+current #epochs=2, #steps=423
+100%|██████████████████████████████████████████████████████████| 423/423 [00:51<00:00,  8.23it/s, Epoch=2, T_Loss=0.289]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:11<00:00,  4.54it/s]
+acc: 0.380165
+AUC: 0.651745
+Avg Precision: 0.171804
+Avg Recall: 0.600584
+d_prime: 0.551596
+train_loss: 0.288851
+valid_loss: 0.726676
+validation finished
+Epoch-2 lr: 0.00025
+---------------
+2026-07-23 15:35:01.362935
+current #epochs=3, #steps=846
+100%|██████████████████████████████████████████████████████████| 423/423 [00:54<00:00,  7.71it/s, Epoch=3, T_Loss=0.282]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:12<00:00,  4.40it/s]
+acc: 0.373081
+AUC: 0.705312
+Avg Precision: 0.172666
+Avg Recall: 0.654271
+d_prime: 0.763308
+train_loss: 0.282188
+valid_loss: 0.722504
+validation finished
+Epoch-3 lr: 0.00025
+---------------
+2026-07-23 15:36:08.655649
+current #epochs=4, #steps=1269
+100%|███████████████████████████████████████████████████████████| 423/423 [00:49<00:00,  8.49it/s, Epoch=4, T_Loss=0.28]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:12<00:00,  4.32it/s]
+acc: 0.384888
+AUC: 0.752698
+Avg Precision: 0.181092
+Avg Recall: 0.738666
+d_prime: 0.965915
+train_loss: 0.279551
+valid_loss: 0.722669
+validation finished
+Epoch-4 lr: 0.00025
+---------------
+2026-07-23 15:37:11.610903
+current #epochs=5, #steps=1692
+100%|██████████████████████████████████████████████████████████| 423/423 [00:53<00:00,  7.88it/s, Epoch=5, T_Loss=0.276]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:11<00:00,  4.47it/s]
+acc: 0.420307
+AUC: 0.752509
+Avg Precision: 0.186815
+Avg Recall: 0.720657
+d_prime: 0.965070
+train_loss: 0.275747
+valid_loss: 0.721360
+validation finished
+Epoch-5 lr: 0.00025
+---------------
+2026-07-23 15:38:17.850886
+current #epochs=6, #steps=2115
+100%|██████████████████████████████████████████████████████████| 423/423 [00:57<00:00,  7.31it/s, Epoch=6, T_Loss=0.271]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:12<00:00,  4.29it/s]
+acc: 0.478158
+AUC: 0.804985
+Avg Precision: 0.199322
+Avg Recall: 0.796204
+d_prime: 1.215604
+train_loss: 0.271170
+valid_loss: 0.718396
+validation finished
+Epoch-6 lr: 0.0002125
+---------------
+2026-07-23 15:39:28.744434
+current #epochs=7, #steps=2538
+100%|██████████████████████████████████████████████████████████| 423/423 [00:56<00:00,  7.43it/s, Epoch=7, T_Loss=0.267]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:12<00:00,  4.32it/s]
+acc: 0.491145
+AUC: 0.816404
+Avg Precision: 0.204763
+Avg Recall: 0.819190
+d_prime: 1.275261
+train_loss: 0.267481
+valid_loss: 0.716716
+validation finished
+Epoch-7 lr: 0.00018062499999999999
+---------------
+2026-07-23 15:40:38.586011
+current #epochs=8, #steps=2961
+100%|██████████████████████████████████████████████████████████| 423/423 [01:01<00:00,  6.93it/s, Epoch=8, T_Loss=0.264]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:12<00:00,  4.24it/s]
+acc: 0.547226
+AUC: 0.840592
+Avg Precision: 0.208164
+Avg Recall: 0.828603
+d_prime: 1.409821
+train_loss: 0.263798
+valid_loss: 0.713879
+validation finished
+Epoch-8 lr: 0.00015353125
+---------------
+2026-07-23 15:41:52.810285
+current #epochs=9, #steps=3384
+100%|██████████████████████████████████████████████████████████| 423/423 [01:00<00:00,  6.99it/s, Epoch=9, T_Loss=0.257]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:12<00:00,  4.13it/s]
+acc: 0.554309
+AUC: 0.848454
+Avg Precision: 0.211865
+Avg Recall: 0.836589
+d_prime: 1.456396
+train_loss: 0.256884
+valid_loss: 0.711138
+validation finished
+Epoch-9 lr: 0.0001305015625
+---------------
+2026-07-23 15:43:06.783587
+current #epochs=10, #steps=3807
+100%|█████████████████████████████████████████████████████████| 423/423 [00:59<00:00,  7.12it/s, Epoch=10, T_Loss=0.252]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:11<00:00,  4.44it/s]
+acc: 0.593270
+AUC: 0.876479
+Avg Precision: 0.217644
+Avg Recall: 0.895013
+d_prime: 1.637042
+train_loss: 0.252063
+valid_loss: 0.710664
+validation finished
+Epoch-10 lr: 0.00011092632812499999
+---------------
+2026-07-23 15:44:18.787863
+current #epochs=11, #steps=4230
+100%|██████████████████████████████████████████████████████████| 423/423 [00:58<00:00,  7.18it/s, Epoch=11, T_Loss=0.25]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:11<00:00,  4.47it/s]
+acc: 0.598583
+AUC: 0.878602
+Avg Precision: 0.218540
+Avg Recall: 0.875956
+d_prime: 1.651838
+train_loss: 0.250123
+valid_loss: 0.708470
+validation finished
+Epoch-11 lr: 9.428737890624999e-05
+---------------
+2026-07-23 15:45:30.185645
+current #epochs=12, #steps=4653
+100%|█████████████████████████████████████████████████████████| 423/423 [01:01<00:00,  6.85it/s, Epoch=12, T_Loss=0.245]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:12<00:00,  4.23it/s]
+acc: 0.628689
+AUC: 0.895372
+Avg Precision: 0.221089
+Avg Recall: 0.910333
+d_prime: 1.775703
+train_loss: 0.244881
+valid_loss: 0.706612
+validation finished
+Epoch-12 lr: 8.014427207031248e-05
+---------------
+2026-07-23 15:46:45.613142
+current #epochs=13, #steps=5076
+100%|█████████████████████████████████████████████████████████| 423/423 [01:01<00:00,  6.91it/s, Epoch=13, T_Loss=0.244]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:11<00:00,  4.55it/s]
+acc: 0.635183
+AUC: 0.900856
+Avg Precision: 0.224360
+Avg Recall: 0.914776
+d_prime: 1.819307
+train_loss: 0.243814
+valid_loss: 0.705260
+validation finished
+Epoch-13 lr: 6.81226312597656e-05
+---------------
+2026-07-23 15:47:59.679283
+current #epochs=14, #steps=5499
+100%|█████████████████████████████████████████████████████████| 423/423 [00:56<00:00,  7.48it/s, Epoch=14, T_Loss=0.241]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:11<00:00,  4.44it/s]
+acc: 0.640496
+AUC: 0.908417
+Avg Precision: 0.225119
+Avg Recall: 0.921455
+d_prime: 1.882417
+train_loss: 0.240798
+valid_loss: 0.703586
+validation finished
+Epoch-14 lr: 5.7904236570800764e-05
+---------------
+2026-07-23 15:49:09.248403
+current #epochs=15, #steps=5922
+100%|█████████████████████████████████████████████████████████| 423/423 [00:55<00:00,  7.59it/s, Epoch=15, T_Loss=0.235]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:11<00:00,  4.56it/s]
+acc: 0.680638
+AUC: 0.923459
+Avg Precision: 0.228696
+Avg Recall: 0.942905
+d_prime: 2.020532
+train_loss: 0.235113
+valid_loss: 0.702089
+validation finished
+Epoch-15 lr: 4.921860108518065e-05
+---------------
+2026-07-23 15:50:17.501241
+current #epochs=16, #steps=6345
+100%|█████████████████████████████████████████████████████████| 423/423 [00:53<00:00,  7.94it/s, Epoch=16, T_Loss=0.234]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:11<00:00,  4.61it/s]
+acc: 0.692444
+AUC: 0.926559
+Avg Precision: 0.229107
+Avg Recall: 0.945716
+d_prime: 2.051501
+train_loss: 0.234046
+valid_loss: 0.700878
+validation finished
+Epoch-16 lr: 4.183581092240355e-05
+---------------
+2026-07-23 15:51:23.398988
+current #epochs=17, #steps=6768
+100%|█████████████████████████████████████████████████████████| 423/423 [00:54<00:00,  7.78it/s, Epoch=17, T_Loss=0.233]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:11<00:00,  4.50it/s]
+acc: 0.694805
+AUC: 0.935938
+Avg Precision: 0.230269
+Avg Recall: 0.948232
+d_prime: 2.151788
+train_loss: 0.233229
+valid_loss: 0.699970
+validation finished
+Epoch-17 lr: 3.556043928404302e-05
+---------------
+2026-07-23 15:52:30.328521
+current #epochs=18, #steps=7191
+100%|█████████████████████████████████████████████████████████| 423/423 [00:54<00:00,  7.77it/s, Epoch=18, T_Loss=0.229]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:11<00:00,  4.65it/s]
+acc: 0.716057
+AUC: 0.940463
+Avg Precision: 0.232956
+Avg Recall: 0.964121
+d_prime: 2.204300
+train_loss: 0.229189
+valid_loss: 0.698813
+validation finished
+Epoch-18 lr: 3.0226373391436563e-05
+---------------
+2026-07-23 15:53:37.089687
+current #epochs=19, #steps=7614
+100%|█████████████████████████████████████████████████████████| 423/423 [00:53<00:00,  7.95it/s, Epoch=19, T_Loss=0.227]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:11<00:00,  4.50it/s]
+acc: 0.733766
+AUC: 0.944482
+Avg Precision: 0.233197
+Avg Recall: 0.965097
+d_prime: 2.253621
+train_loss: 0.227201
+valid_loss: 0.698279
+validation finished
+Epoch-19 lr: 2.5692417382721078e-05
+---------------
+2026-07-23 15:54:42.987279
+current #epochs=20, #steps=8037
+100%|█████████████████████████████████████████████████████████| 423/423 [00:52<00:00,  8.05it/s, Epoch=20, T_Loss=0.226]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:12<00:00,  4.38it/s]
+acc: 0.735537
+AUC: 0.948591
+Avg Precision: 0.234660
+Avg Recall: 0.967209
+d_prime: 2.307063
+train_loss: 0.225709
+valid_loss: 0.696873
+validation finished
+Epoch-20 lr: 2.1838554775312915e-05
+---------------
+2026-07-23 15:55:48.448946
+current #epochs=21, #steps=8460
+100%|█████████████████████████████████████████████████████████| 423/423 [00:52<00:00,  8.12it/s, Epoch=21, T_Loss=0.225]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:12<00:00,  4.41it/s]
+acc: 0.738489
+AUC: 0.949028
+Avg Precision: 0.234438
+Avg Recall: 0.965231
+d_prime: 2.312942
+train_loss: 0.225491
+valid_loss: 0.696369
+validation finished
+Epoch-21 lr: 1.8562771559015977e-05
+---------------
+2026-07-23 15:56:53.201759
+current #epochs=22, #steps=8883
+100%|█████████████████████████████████████████████████████████| 423/423 [00:52<00:00,  8.13it/s, Epoch=22, T_Loss=0.223]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:11<00:00,  4.61it/s]
+acc: 0.749115
+AUC: 0.950266
+Avg Precision: 0.234294
+Avg Recall: 0.964591
+d_prime: 2.329829
+train_loss: 0.223180
+valid_loss: 0.696254
+validation finished
+Epoch-22 lr: 1.577835582516358e-05
+---------------
+2026-07-23 15:57:57.348192
+current #epochs=23, #steps=9306
+100%|██████████████████████████████████████████████████████████| 423/423 [00:51<00:00,  8.18it/s, Epoch=23, T_Loss=0.22]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:11<00:00,  4.66it/s]
+acc: 0.758560
+AUC: 0.954267
+Avg Precision: 0.235324
+Avg Recall: 0.968163
+d_prime: 2.386795
+train_loss: 0.220083
+valid_loss: 0.695007
+validation finished
+Epoch-23 lr: 1.3411602451389044e-05
+---------------
+2026-07-23 15:59:01.031294
+current #epochs=24, #steps=9729
+100%|█████████████████████████████████████████████████████████| 423/423 [00:51<00:00,  8.17it/s, Epoch=24, T_Loss=0.219]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:11<00:00,  4.76it/s]
+acc: 0.753247
+AUC: 0.953860
+Avg Precision: 0.235591
+Avg Recall: 0.966317
+d_prime: 2.380822
+train_loss: 0.218647
+valid_loss: 0.694458
+validation finished
+Epoch-24 lr: 1.1399862083680687e-05
+---------------
+2026-07-23 16:00:04.316732
+current #epochs=25, #steps=10152
+100%|█████████████████████████████████████████████████████████| 423/423 [00:51<00:00,  8.23it/s, Epoch=25, T_Loss=0.218]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:11<00:00,  4.60it/s]
+acc: 0.759740
+AUC: 0.954947
+Avg Precision: 0.235448
+Avg Recall: 0.967796
+d_prime: 2.396859
+train_loss: 0.218411
+valid_loss: 0.694084
+validation finished
+Epoch-25 lr: 9.689882771128584e-06
+---------------
+2026-07-23 16:01:08.026492
+current #epochs=26, #steps=10575
+100%|█████████████████████████████████████████████████████████| 423/423 [00:51<00:00,  8.17it/s, Epoch=26, T_Loss=0.216]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:11<00:00,  4.57it/s]
+acc: 0.759740
+AUC: 0.957080
+Avg Precision: 0.235495
+Avg Recall: 0.967654
+d_prime: 2.429287
+train_loss: 0.216458
+valid_loss: 0.693674
+validation finished
+Epoch-26 lr: 8.236400355459297e-06
+---------------
+2026-07-23 16:02:11.753286
+current #epochs=27, #steps=10998
+100%|█████████████████████████████████████████████████████████| 423/423 [00:51<00:00,  8.16it/s, Epoch=27, T_Loss=0.218]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:11<00:00,  4.47it/s]
+acc: 0.766824
+AUC: 0.958031
+Avg Precision: 0.236167
+Avg Recall: 0.969511
+d_prime: 2.444161
+train_loss: 0.218426
+valid_loss: 0.693461
+validation finished
+Epoch-27 lr: 7.0009403021404025e-06
+---------------
+2026-07-23 16:03:16.041235
+current #epochs=28, #steps=11421
+100%|█████████████████████████████████████████████████████████| 423/423 [00:54<00:00,  7.74it/s, Epoch=28, T_Loss=0.217]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:11<00:00,  4.45it/s]
+acc: 0.763872
+AUC: 0.957690
+Avg Precision: 0.235420
+Avg Recall: 0.967215
+d_prime: 2.438800
+train_loss: 0.217075
+valid_loss: 0.693204
+validation finished
+Epoch-28 lr: 5.950799256819342e-06
+---------------
+2026-07-23 16:04:22.990471
+current #epochs=29, #steps=11844
+100%|█████████████████████████████████████████████████████████| 423/423 [00:53<00:00,  7.84it/s, Epoch=29, T_Loss=0.215]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:11<00:00,  4.49it/s]
+acc: 0.765643
+AUC: 0.958492
+Avg Precision: 0.236227
+Avg Recall: 0.967446
+d_prime: 2.451460
+train_loss: 0.215499
+valid_loss: 0.692729
+validation finished
+Epoch-29 lr: 5.058179368296441e-06
+---------------
+2026-07-23 16:05:29.073622
+current #epochs=30, #steps=12267
+100%|█████████████████████████████████████████████████████████| 423/423 [00:53<00:00,  7.92it/s, Epoch=30, T_Loss=0.215]
+start validation
+100%|███████████████████████████████████████████████████████████████████████████████████| 53/53 [00:11<00:00,  4.61it/s]
+acc: 0.774498
+AUC: 0.959282
+Avg Precision: 0.236321
+Avg Recall: 0.969886
+d_prime: 2.464150
+train_loss: 0.215140
+valid_loss: 0.692641
+validation finished
+Epoch-30 lr: 4.299452463051975e-06
+(aum) averie@localhost:~/Audio-Mamba-AuM$🎉🎉🎉 训练完美收官！
+
+这是一个非常成功的训练结果，你的模型在 30 个 epoch 内取得了巨大的进步。让我们来看看最终的成果：
+
+📊 训练全程回顾（Epoch 1 → 30）
+指标	初始 (Epoch 1)	最终 (Epoch 30)	提升
+验证准确率	31.46%	77.45%	✅ +45.99%
+AUC	0.630	0.959	✅ +0.329
+平均召回率	56.37%	96.99%	✅ +40.62%
+d_prime	0.470	2.464	✅ +1.994
+Train Loss	0.301	0.215	✅ 持续下降
+Valid Loss	0.731	0.693	✅ 持续下降
+🔍 关键成就
+✅ 验证准确率 77.45%！ 对于 10 类鸟类分类任务，这是一个非常优秀的结果。模型在大多数情况下都能正确识别鸟种。
+
+✅ AUC 达到 0.959！ 这是一个极高的 AUC 值，说明模型在区分不同鸟类方面表现极为出色。
+
+✅ 平均召回率 96.99%！ 模型在验证集上能识别出超过 97% 的正确鸟类，几乎没有漏掉。
+
+✅ 训练损失和验证损失持续下降：没有出现过拟合迹象（验证损失没有上升），说明模型学到了可泛化的特征。
+
+✅ 学习率自适应调整：从最初的 0.00025 逐渐降低到 4.3e-06，说明优化器在精细调优模型。
+
+💡 结果解读
+指标	含义	你的结果
+准确率 77.45%	模型在 10 类中正确分类的比例	✅ 很高，接近 80%
+AUC 0.959	模型区分正负样本的能力	✅ 极好，接近完美
+召回率 96.99%	模型找到所有正确类别的比例	✅ 几乎不漏
+精度 23.63%	模型预测正确的置信度	⚠️ 相对较低
+关于精度偏低（23.6%）
+精度偏低但召回率很高，意味着模型倾向于保守输出——它宁愿把不确定的样本也归为某一类，也不愿意漏掉。这在鸟类识别中是合理的（宁可多报几种，也不错报）。精度偏低通常与类别不均衡有关，如果你希望提高精度，可以在后续实验中调整分类阈值或使用更平衡的数据集。
+ rm -rf ./experiments/mamba_10class_baseline_512
+
+python src/run.py --run_type train \
+  --dataset birdclef \
+  --n_class 10 \
+  --data-train ./data/datafiles/birdclef_train_data.json \
+  --data-val ./data/datafiles/birdclef_valid_data.json \
+  --label-csv ./data/birdclef_labels.csv \
+  --n-epochs 30 \
+  --batch-size 16 \
+  --loss BCE \
+  --lr 0.00025 \
+  --model aum \
+  --model_type small \
+  --aum_type Bi-Bi \
+  --audio_length 512 \
+  --melbins 128 \
+  --num-workers 0 \
+  --exp-dir ./experiments/mamba_10class_baseline_512
+I am process 970, running on localhost: starting (Mon Jul 27 15:33:55 2026)
+balanced sampler is not used
+---------------the train dataloader---------------
+now using following mask: 0 freq, 0 time
+now using mix-up with rate 0.000000
+now process birdclef
+use dataset mean -4.268 and std 4.569 to normalize the input.
+number of classes is 10
+---------------the evaluation dataloader---------------
+now using following mask: 0 freq, 0 time
+now using mix-up with rate 0.000000
+now process birdclef
+use dataset mean -4.268 and std 4.569 to normalize the input.
+number of classes is 10
+Model: AudioMamba (AUM)
+Resize function is resample_patch_embed
+Initializing FlexiPatchEmbed with the following parameters:
+patch_size=(16, 16), in_chans=1, embed_dim=384, bias=True, norm_layer=None, flatten=True, proj_load=None, resize_func=resample_patch_embed
+The resize function is resample_patch_embed
+Precomputed weights for []
+Initializing FlexiPosEmbed with the following parameters:
+input_size=(128, 512), pos_grid_size=(12, 50), embed_dim=384, pos_embed_load=None, pos_grid_size_load=(-1, -1), n_prefix_tokens=1, pos_embed_prefix=True
+
+Creating experiment directory: ./experiments/mamba_10class_baseline_512
+Now starting training for 30 epochs
+Total parameter number is : 23.475 million
+Total trainable parameter number is : 23.475 million
+now training with birdclef, main metrics: None, loss function: BCEWithLogitsLoss(), learning rate scheduler: <torch.optim.lr_scheduler.MultiStepLR object at 0x7296f1afd0c0>
+The learning rate scheduler starts at 2 epoch with decay rate of 0.500 every 1 epochs
+current #steps=0, #epochs=1
+start training...
+---------------
+2026-07-27 15:33:56.504212
+current #epochs=1, #steps=0
+  0%|                                                                                                    | 0/423 [00:00<?, ?it/s]/home/averie/Audio-Mamba-AuM/src/utilities/tokenization.py:306: UserWarning: Applied workaround for CuDNN issue, install nvrtc.so (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:80.)
+  x = F.conv2d(x, weight, bias=bias, stride=strides)
+100%|███████████████████████████████████████████████████████████████████| 423/423 [03:46<00:00,  1.87it/s, Epoch=1, T_Loss=0.286]
+start validation
+100%|████████████████████████████████████████████████████████████████████████████████████████████| 53/53 [00:22<00:00,  2.34it/s]
+acc: 0.427391
+AUC: 0.732842
+Avg Precision: 0.189527
+Avg Recall: 0.723319
+d_prime: 0.878836
+train_loss: 0.285621
+valid_loss: 0.725875
+validation finished
+Epoch-1 lr: 0.00025
+---------------
+2026-07-27 15:38:06.491699
+current #epochs=2, #steps=423
+100%|███████████████████████████████████████████████████████████████████| 423/423 [03:50<00:00,  1.84it/s, Epoch=2, T_Loss=0.221]
+start validation
+100%|████████████████████████████████████████████████████████████████████████████████████████████| 53/53 [00:21<00:00,  2.46it/s]
+acc: 0.579103
+AUC: 0.822733
+Avg Precision: 0.215657
+Avg Recall: 0.826549
+d_prime: 1.309324
+train_loss: 0.220586
+valid_loss: 0.706436
+validation finished
+Epoch-2 lr: 0.00025
+---------------
+2026-07-27 15:42:19.312187
+current #epochs=3, #steps=846
+100%|███████████████████████████████████████████████████████████████████| 423/423 [03:44<00:00,  1.89it/s, Epoch=3, T_Loss=0.158]
+start validation
+100%|████████████████████████████████████████████████████████████████████████████████████████████| 53/53 [00:18<00:00,  2.89it/s]
+acc: 0.685360
+AUC: 0.876248
+Avg Precision: 0.226253
+Avg Recall: 0.874609
+d_prime: 1.635446
+train_loss: 0.157514
+valid_loss: 0.695290
+validation finished
+Epoch-3 lr: 0.000125
+---------------
+2026-07-27 15:46:22.488486
+current #epochs=4, #steps=1269
+100%|███████████████████████████████████████████████████████████████████| 423/423 [03:43<00:00,  1.89it/s, Epoch=4, T_Loss=0.102]
+start validation
+100%|████████████████████████████████████████████████████████████████████████████████████████████| 53/53 [00:20<00:00,  2.55it/s]
+acc: 0.736718
+AUC: 0.898315
+Avg Precision: 0.231844
+Avg Recall: 0.923409
+d_prime: 1.798895
+train_loss: 0.102061
+valid_loss: 0.687753
+validation finished
+Epoch-4 lr: 6.25e-05
+---------------
+2026-07-27 15:50:27.304030
+current #epochs=5, #steps=1692
+100%|██████████████████████████████████████████████████████████████████| 423/423 [03:46<00:00,  1.87it/s, Epoch=5, T_Loss=0.0622]
+start validation
+100%|████████████████████████████████████████████████████████████████████████████████████████████| 53/53 [00:18<00:00,  2.81it/s]
+acc: 0.740260
+AUC: 0.904228
+Avg Precision: 0.232815
+Avg Recall: 0.906354
+d_prime: 1.847003
+train_loss: 0.062186
+valid_loss: 0.685134
+validation finished
+Epoch-5 lr: 3.125e-05
+---------------
+2026-07-27 15:54:33.247427
+current #epochs=6, #steps=2115
+100%|██████████████████████████████████████████████████████████████████| 423/423 [03:48<00:00,  1.86it/s, Epoch=6, T_Loss=0.0423]
+start validation
+100%|████████████████████████████████████████████████████████████████████████████████████████████| 53/53 [00:19<00:00,  2.71it/s]
+acc: 0.750885
+AUC: 0.916841
+Avg Precision: 0.232718
+Avg Recall: 0.930453
+d_prime: 1.957455
+train_loss: 0.042269
+valid_loss: 0.683417
+validation finished
+Epoch-6 lr: 1.5625e-05
+---------------
+2026-07-27 15:58:41.589211
+current #epochs=7, #steps=2538
+100%|██████████████████████████████████████████████████████████████████| 423/423 [03:41<00:00,  1.91it/s, Epoch=7, T_Loss=0.0316]
+start validation
+100%|████████████████████████████████████████████████████████████████████████████████████████████| 53/53 [00:19<00:00,  2.67it/s]
+acc: 0.755608
+AUC: 0.915502
+Avg Precision: 0.231672
+Avg Recall: 0.921932
+d_prime: 1.945157
+train_loss: 0.031592
+valid_loss: 0.682842
+validation finished
+Epoch-7 lr: 7.8125e-06
+---------------
+2026-07-27 16:02:43.689080
+current #epochs=8, #steps=2961
+100%|██████████████████████████████████████████████████████████████████| 423/423 [03:37<00:00,  1.94it/s, Epoch=8, T_Loss=0.0263]
+start validation
+100%|████████████████████████████████████████████████████████████████████████████████████████████| 53/53 [00:18<00:00,  2.84it/s]
+acc: 0.755608
+AUC: 0.920043
+Avg Precision: 0.231614
+Avg Recall: 0.942665
+d_prime: 1.987476
+train_loss: 0.026336
+valid_loss: 0.682644
+validation finished
+Epoch-8 lr: 3.90625e-06
+---------------
+2026-07-27 16:06:40.705943
+current #epochs=9, #steps=3384
+100%|██████████████████████████████████████████████████████████████████| 423/423 [03:32<00:00,  1.99it/s, Epoch=9, T_Loss=0.0237]
+start validation
+100%|████████████████████████████████████████████████████████████████████████████████████████████| 53/53 [00:16<00:00,  3.29it/s]
+acc: 0.753837
+AUC: 0.920040
+Avg Precision: 0.230329
+Avg Recall: 0.933533
+d_prime: 1.987449
+train_loss: 0.023722
+valid_loss: 0.682734
+validation finished
+Epoch-9 lr: 1.953125e-06
+---------------
+2026-07-27 16:10:30.257638
+current #epochs=10, #steps=3807
+100%|█████████████████████████████████████████████████████████████████| 423/423 [03:30<00:00,  2.01it/s, Epoch=10, T_Loss=0.0224]
+start validation
+100%|████████████████████████████████████████████████████████████████████████████████████████████| 53/53 [00:19<00:00,  2.75it/s]
+acc: 0.751476
+AUC: 0.919112
+Avg Precision: 0.229765
+Avg Recall: 0.931838
+d_prime: 1.978663
+train_loss: 0.022409
+valid_loss: 0.682600
+validation finished
+Epoch-10 lr: 9.765625e-07
+---------------512的数据

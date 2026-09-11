@@ -1,0 +1,448 @@
+(birdnet-gpu) E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf>python train_leaf.py
+2026-06-20 00:05:18.481134: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:42] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+[GPU] 检测到 1 个 GPU 设备:
+  - /physical_device:GPU:0
+[GPU] 已启用显存按需增长策略
+
+检测到 10 个物种:
+  0: asbfly
+  1: ashdro1
+  2: ashpri1
+  3: ashwoo2
+  4: asikoe2
+  5: asiope1
+  6: aspfly1
+  7: aspswi1
+  8: barfly1
+  9: barswa
+
+加载训练集...
+  找到 6755 个音频文件
+加载验证集...
+  找到 1694 个音频文件
+
+验证数据维度...
+  输入 shape: (8, 72000)
+  标签 shape: (8, 10)
+  标签样例: [0. 0. 1. 0. 0.]
+
+构建模型...
+Model: "model_1"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ audio_input (InputLayer)    [(None, 72000)]           0
+
+ leaf_frontend (LeafFrontend  (None, 6, 96, 1)         672
+ )
+
+ model (Functional)          (None, 128)               93568
+
+ dense (Dense)               (None, 256)               33024
+
+ batch_normalization_3 (Batc  (None, 256)              1024
+ hNormalization)
+
+ dropout_1 (Dropout)         (None, 256)               0
+
+ dense_1 (Dense)             (None, 10)                2570
+
+=================================================================
+Total params: 130,858
+Trainable params: 129,898
+Non-trainable params: 960
+_________________________________________________________________
+
+测试前向传播...
+2026-06-20 00:05:22.351964: E tensorflow/core/platform/windows/subprocess.cc:287] Call to CreateProcess failed. Error code: 2, command: '"ptxas.exe" "--version"'
+2026-06-20 00:05:22.353045: E tensorflow/core/platform/windows/subprocess.cc:287] Call to CreateProcess failed. Error code: 2, command: '"ptxas.exe" "--version"'
+2026-06-20 00:05:22.353141: W tensorflow/stream_executor/gpu/asm_compiler.cc:80] Couldn't get ptxas version string: INTERNAL: Couldn't invoke ptxas.exe --version
+2026-06-20 00:05:22.356324: E tensorflow/core/platform/windows/subprocess.cc:287] Call to CreateProcess failed. Error code: 2, command: '"ptxas.exe" "C:\temp\/tempfile-朕的大电脑-14f8-10736-6549d75bf9836" "-o" "C:\temp\/tempfile-朕的大电脑-14f8-10736-6549d75bfa0aa" "-arch=sm_89" "--warn-on-spills"'
+2026-06-20 00:05:22.356672: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] INTERNAL: Failed to launch ptxas
+Relying on driver to perform ptx compilation.
+Modify $PATH to customize ptxas location.
+This message will be only logged once.
+  输出 shape: (8, 10)
+  预测样例: [8 8 8 8 8]
+  输出概率样例: [0.10092662 0.09996224 0.09825126 0.10087638 0.09908827]
+
+开始训练 25 个 epoch...
+Epoch 1/25
+Traceback (most recent call last):
+  File "E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf\train_leaf.py", line 400, in <module>
+    main()
+  File "E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf\train_leaf.py", line 363, in main
+    history = model.fit(
+  File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\keras\utils\traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\tensorflow\python\eager\execute.py", line 54, in quick_execute
+    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+tensorflow.python.framework.errors_impl.InvalidArgumentError: Graph execution error:
+
+Detected at node 'SparseToDense' defined at (most recent call last):
+    File "E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf\train_leaf.py", line 400, in <module>
+      main()
+    File "E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf\train_leaf.py", line 363, in main
+      history = model.fit(
+    File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\keras\utils\traceback_utils.py", line 65, in error_handler
+      return fn(*args, **kwargs)
+    File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\keras\engine\training.py", line 1564, in fit
+      tmp_logs = self.train_function(iterator)
+    File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\keras\engine\training.py", line 1160, in train_function
+      return step_function(self, iterator)
+    File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\keras\engine\training.py", line 1146, in step_function
+      outputs = model.distribute_strategy.run(run_step, args=(data,))
+    File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\keras\engine\training.py", line 1135, in run_step
+      outputs = model.train_step(data)
+    File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\keras\engine\training.py", line 998, in train_step
+      return self.compute_metrics(x, y, y_pred, sample_weight)
+    File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\keras\engine\training.py", line 1092, in compute_metrics
+      self.compiled_metrics.update_state(y, y_pred, sample_weight)
+    File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\keras\engine\compile_utils.py", line 605, in update_state
+      metric_obj.update_state(y_t, y_p, sample_weight=mask)
+    File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\keras\utils\metrics_utils.py", line 77, in decorated
+      update_op = update_state_fn(*args, **kwargs)
+    File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\keras\metrics\base_metric.py", line 143, in update_state_fn
+      return ag_update_state(*args, **kwargs)
+    File "E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf\train_leaf.py", line 136, in update_state
+      cm = tf.sparse.to_dense(cm)
+Node: 'SparseToDense'
+indices[1] is out of order. Many sparse ops require sorted indices.
+  Use `tf.sparse.reorder` to create a correctly ordered copy.
+
+
+         [[{{node SparseToDense}}]] [Op:__inference_train_function_5235]
+
+(birdnet-gpu) E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf>
+(birdnet-gpu) E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf>
+(birdnet-gpu) E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf>
+(birdnet-gpu) E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf>
+(birdnet-gpu) E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf>cuda_path = r"D:\download\anaconda\envs\birdnet-gpu\bin"
+'cuda_path' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(birdnet-gpu) E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf>if os.path.exists(cuda_path) and cuda_path not in os.environ.get('PATH', ''):
+此时不应有 and。
+
+(birdnet-gpu) E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf>    os.environ['PATH'] = cuda_path + ';' + os.environ.get('PATH', '')
+'os.environ['PATH']' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(birdnet-gpu) E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf>
+(birdnet-gpu) E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf>
+(birdnet-gpu) E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf>
+(birdnet-gpu) E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf>
+(birdnet-gpu) E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf>
+(birdnet-gpu) E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf>
+(birdnet-gpu) E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf>
+(birdnet-gpu) E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf>python train_leaf.py
+2026-06-20 00:08:19.587254: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:42] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+[GPU] 检测到 1 个 GPU 设备:
+  - /physical_device:GPU:0
+[GPU] 已启用显存按需增长策略
+
+检测到 10 个物种:
+  0: asbfly
+  1: ashdro1
+  2: ashpri1
+  3: ashwoo2
+  4: asikoe2
+  5: asiope1
+  6: aspfly1
+  7: aspswi1
+  8: barfly1
+  9: barswa
+
+加载训练集...
+  找到 6755 个音频文件
+加载验证集...
+  找到 1694 个音频文件
+
+验证数据维度...
+  输入 shape: (8, 72000)
+  标签 shape: (8, 10)
+  标签样例: [0. 1. 0. 0. 0.]
+
+构建模型...
+Model: "model_1"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ audio_input (InputLayer)    [(None, 72000)]           0
+
+ leaf_frontend (LeafFrontend  (None, 6, 96, 1)         672
+ )
+
+ model (Functional)          (None, 128)               93568
+
+ dense (Dense)               (None, 256)               33024
+
+ batch_normalization_3 (Batc  (None, 256)              1024
+ hNormalization)
+
+ dropout_1 (Dropout)         (None, 256)               0
+
+ dense_1 (Dense)             (None, 10)                2570
+
+=================================================================
+Total params: 130,858
+Trainable params: 129,898
+Non-trainable params: 960
+_________________________________________________________________
+
+测试前向传播...
+2026-06-20 00:08:23.467822: E tensorflow/core/platform/windows/subprocess.cc:287] Call to CreateProcess failed. Error code: 2, command: '"ptxas.exe" "--version"'
+2026-06-20 00:08:23.469414: E tensorflow/core/platform/windows/subprocess.cc:287] Call to CreateProcess failed. Error code: 2, command: '"ptxas.exe" "--version"'
+2026-06-20 00:08:23.469474: W tensorflow/stream_executor/gpu/asm_compiler.cc:80] Couldn't get ptxas version string: INTERNAL: Couldn't invoke ptxas.exe --version
+2026-06-20 00:08:23.472957: E tensorflow/core/platform/windows/subprocess.cc:287] Call to CreateProcess failed. Error code: 2, command: '"ptxas.exe" "C:\temp\/tempfile-朕的大电脑-6768-7216-6549d808b35f1" "-o" "C:\temp\/tempfile-朕的大电脑-6768-7216-6549d808b3ee6" "-arch=sm_89" "--warn-on-spills"'
+2026-06-20 00:08:23.473618: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] INTERNAL: Failed to launch ptxas
+Relying on driver to perform ptx compilation.
+Modify $PATH to customize ptxas location.
+This message will be only logged once.
+  输出 shape: (8, 10)
+  预测样例: [0 0 0 5 0]
+  输出概率样例: [0.10045927 0.09991607 0.09997215 0.099567   0.09999813]
+
+开始训练 25 个 epoch...
+Epoch 1/25
+845/845 [==============================] - ETA: 0s - loss: 2.7725 - top1_acc: 0.1679 - macro_f1: 0.1287
+Epoch 1: saving model to E:\bird\leaf_trained_model\epoch_snap_01.keras
+
+Epoch 1: val_top1_acc improved from -inf to 0.17355, saving model to E:\bird\leaf_trained_model\best_model.keras
+
+[GPU] Epoch 1 耗时: 1712.2s
+[GPU] 显存使用: 当前 6.8 MB, 峰值 1927.6 MB
+845/845 [==============================] - 1712s 2s/step - loss: 2.7725 - top1_acc: 0.1679 - macro_f1: 0.1287 - val_loss: 4.7145 - val_top1_acc: 0.1736 - val_macro_f1: 0.0408 - lr: 5.0000e-04
+Epoch 2/25
+845/845 [==============================] - ETA: 0s - loss: 2.2515 - top1_acc: 0.2472 - macro_f1: 0.1737
+Epoch 2: saving model to E:\bird\leaf_trained_model\epoch_snap_02.keras
+
+Epoch 2: val_top1_acc did not improve from 0.17355
+
+[GPU] Epoch 2 耗时: 1717.9s
+[GPU] 显存使用: 当前 6.8 MB, 峰值 1928.0 MB
+[GPU] 近 5 个 epoch 平均耗时: 1715.1s
+845/845 [==============================] - 1718s 2s/step - loss: 2.2515 - top1_acc: 0.2472 - macro_f1: 0.1737 - val_loss: 3.4503 - val_top1_acc: 0.0767 - val_macro_f1: 0.0359 - lr: 5.0000e-04
+Epoch 3/25
+845/845 [==============================] - ETA: 0s - loss: 2.0419 - top1_acc: 0.3066 - macro_f1: 0.2063
+Epoch 3: saving model to E:\bird\leaf_trained_model\epoch_snap_03.keras
+
+Epoch 3: val_top1_acc did not improve from 0.17355
+
+[GPU] Epoch 3 耗时: 1694.3s
+[GPU] 显存使用: 当前 6.8 MB, 峰值 1932.5 MB
+[GPU] 近 5 个 epoch 平均耗时: 1708.2s
+845/845 [==============================] - 1694s 2s/step - loss: 2.0419 - top1_acc: 0.3066 - macro_f1: 0.2063 - val_loss: 4.4747 - val_top1_acc: 0.1600 - val_macro_f1: 0.0472 - lr: 5.0000e-04
+Epoch 4/25
+845/845 [==============================] - ETA: 0s - loss: 1.9193 - top1_acc: 0.3281 - macro_f1: 0.2252
+Epoch 4: saving model to E:\bird\leaf_trained_model\epoch_snap_04.keras
+
+Epoch 4: val_top1_acc improved from 0.17355 to 0.18949, saving model to E:\bird\leaf_trained_model\best_model.keras
+
+[GPU] Epoch 4 耗时: 1682.4s
+[GPU] 显存使用: 当前 6.8 MB, 峰值 1932.5 MB
+[GPU] 近 5 个 epoch 平均耗时: 1701.7s
+845/845 [==============================] - 1682s 2s/step - loss: 1.9193 - top1_acc: 0.3281 - macro_f1: 0.2252 - val_loss: 2.8930 - val_top1_acc: 0.1895 - val_macro_f1: 0.0766 - lr: 5.0000e-04
+Epoch 5/25
+845/845 [==============================] - ETA: 0s - loss: 1.7775 - top1_acc: 0.3797 - macro_f1: 0.2516
+Epoch 5: saving model to E:\bird\leaf_trained_model\epoch_snap_05.keras
+
+Epoch 5: val_top1_acc did not improve from 0.18949
+
+[GPU] Epoch 5 耗时: 1676.4s
+[GPU] 显存使用: 当前 6.8 MB, 峰值 1932.5 MB
+[GPU] 近 5 个 epoch 平均耗时: 1696.7s
+845/845 [==============================] - 1676s 2s/step - loss: 1.7775 - top1_acc: 0.3797 - macro_f1: 0.2516 - val_loss: 4.2660 - val_top1_acc: 0.1688 - val_macro_f1: 0.0477 - lr: 5.0000e-04
+Epoch 6/25
+845/845 [==============================] - ETA: 0s - loss: 1.6578 - top1_acc: 0.4261 - macro_f1: 0.2821
+Epoch 6: saving model to E:\bird\leaf_trained_model\epoch_snap_06.keras
+
+Epoch 6: val_top1_acc did not improve from 0.18949
+
+[GPU] Epoch 6 耗时: 1676.8s
+[GPU] 显存使用: 当前 6.8 MB, 峰值 1932.5 MB
+[GPU] 近 5 个 epoch 平均耗时: 1689.6s
+845/845 [==============================] - 1677s 2s/step - loss: 1.6578 - top1_acc: 0.4261 - macro_f1: 0.2821 - val_loss: 4.3559 - val_top1_acc: 0.1736 - val_macro_f1: 0.0565 - lr: 5.0000e-04
+Epoch 7/25
+845/845 [==============================] - ETA: 0s - loss: 1.5583 - top1_acc: 0.4613 - macro_f1: 0.3003
+Epoch 7: saving model to E:\bird\leaf_trained_model\epoch_snap_07.keras
+
+Epoch 7: val_top1_acc improved from 0.18949 to 0.21251, saving model to E:\bird\leaf_trained_model\best_model.keras
+
+[GPU] Epoch 7 耗时: 1676.7s
+[GPU] 显存使用: 当前 6.8 MB, 峰值 1932.5 MB
+[GPU] 近 5 个 epoch 平均耗时: 1681.3s
+845/845 [==============================] - 1677s 2s/step - loss: 1.5583 - top1_acc: 0.4613 - macro_f1: 0.3003 - val_loss: 2.6388 - val_top1_acc: 0.2125 - val_macro_f1: 0.1073 - lr: 5.0000e-04
+Epoch 8/25
+845/845 [==============================] - ETA: 0s - loss: 1.4818 - top1_acc: 0.4930 - macro_f1: 0.3351
+Epoch 8: saving model to E:\bird\leaf_trained_model\epoch_snap_08.keras
+
+Epoch 8: val_top1_acc improved from 0.21251 to 0.22314, saving model to E:\bird\leaf_trained_model\best_model.keras
+
+[GPU] Epoch 8 耗时: 1676.8s
+[GPU] 显存使用: 当前 6.8 MB, 峰值 1932.5 MB
+[GPU] 近 5 个 epoch 平均耗时: 1677.8s
+845/845 [==============================] - 1677s 2s/step - loss: 1.4818 - top1_acc: 0.4930 - macro_f1: 0.3351 - val_loss: 5.1129 - val_top1_acc: 0.2231 - val_macro_f1: 0.0757 - lr: 5.0000e-04
+Epoch 9/25
+845/845 [==============================] - ETA: 0s - loss: 1.4243 - top1_acc: 0.5211 - macro_f1: 0.3508
+Epoch 9: saving model to E:\bird\leaf_trained_model\epoch_snap_09.keras
+
+Epoch 9: val_top1_acc did not improve from 0.22314
+
+[GPU] Epoch 9 耗时: 1677.8s
+[GPU] 显存使用: 当前 6.8 MB, 峰值 1932.5 MB
+[GPU] 近 5 个 epoch 平均耗时: 1676.9s
+845/845 [==============================] - 1678s 2s/step - loss: 1.4243 - top1_acc: 0.5211 - macro_f1: 0.3508 - val_loss: 4.7675 - val_top1_acc: 0.1747 - val_macro_f1: 0.0546 - lr: 5.0000e-04
+Epoch 10/25
+845/845 [==============================] - ETA: 0s - loss: 1.3715 - top1_acc: 0.5395 - macro_f1: 0.3733
+Epoch 10: saving model to E:\bird\leaf_trained_model\epoch_snap_10.keras
+
+Epoch 10: val_top1_acc did not improve from 0.22314
+
+Epoch 10: ReduceLROnPlateau reducing learning rate to 0.0002500000118743628.
+
+[GPU] Epoch 10 耗时: 1676.9s
+[GPU] 显存使用: 当前 6.8 MB, 峰值 1932.5 MB
+[GPU] 近 5 个 epoch 平均耗时: 1677.0s
+845/845 [==============================] - 1677s 2s/step - loss: 1.3715 - top1_acc: 0.5395 - macro_f1: 0.3733 - val_loss: 2.6559 - val_top1_acc: 0.2037 - val_macro_f1: 0.0943 - lr: 5.0000e-04
+Epoch 11/25
+845/845 [==============================] - ETA: 0s - loss: 1.3074 - top1_acc: 0.5590 - macro_f1: 0.3905
+Epoch 11: saving model to E:\bird\leaf_trained_model\epoch_snap_11.keras
+
+Epoch 11: val_top1_acc improved from 0.22314 to 0.30342, saving model to E:\bird\leaf_trained_model\best_model.keras
+
+[GPU] Epoch 11 耗时: 1676.7s
+[GPU] 显存使用: 当前 6.8 MB, 峰值 1934.4 MB
+[GPU] 近 5 个 epoch 平均耗时: 1677.0s
+845/845 [==============================] - 1677s 2s/step - loss: 1.3074 - top1_acc: 0.5590 - macro_f1: 0.3905 - val_loss: 2.3637 - val_top1_acc: 0.3034 - val_macro_f1: 0.2127 - lr: 2.5000e-04
+Epoch 12/25
+845/845 [==============================] - ETA: 0s - loss: 1.2656 - top1_acc: 0.5771 - macro_f1: 0.4061
+Epoch 12: saving model to E:\bird\leaf_trained_model\epoch_snap_12.keras
+
+Epoch 12: val_top1_acc did not improve from 0.30342
+
+[GPU] Epoch 12 耗时: 1676.3s
+[GPU] 显存使用: 当前 6.8 MB, 峰值 1934.4 MB
+[GPU] 近 5 个 epoch 平均耗时: 1676.9s
+845/845 [==============================] - 1676s 2s/step - loss: 1.2656 - top1_acc: 0.5771 - macro_f1: 0.4061 - val_loss: 2.1136 - val_top1_acc: 0.2875 - val_macro_f1: 0.2271 - lr: 2.5000e-04
+Epoch 13/25
+845/845 [==============================] - ETA: 0s - loss: 1.2236 - top1_acc: 0.5874 - macro_f1: 0.4181
+Epoch 13: saving model to E:\bird\leaf_trained_model\epoch_snap_13.keras
+
+Epoch 13: val_top1_acc improved from 0.30342 to 0.31464, saving model to E:\bird\leaf_trained_model\best_model.keras
+
+[GPU] Epoch 13 耗时: 1676.9s
+[GPU] 显存使用: 当前 6.8 MB, 峰值 1934.4 MB
+[GPU] 近 5 个 epoch 平均耗时: 1676.9s
+845/845 [==============================] - 1677s 2s/step - loss: 1.2236 - top1_acc: 0.5874 - macro_f1: 0.4181 - val_loss: 2.3969 - val_top1_acc: 0.3146 - val_macro_f1: 0.2406 - lr: 2.5000e-04
+Epoch 14/25
+845/845 [==============================] - ETA: 0s - loss: 1.2050 - top1_acc: 0.5908 - macro_f1: 0.4211
+Epoch 14: saving model to E:\bird\leaf_trained_model\epoch_snap_14.keras
+
+Epoch 14: val_top1_acc improved from 0.31464 to 0.31700, saving model to E:\bird\leaf_trained_model\best_model.keras
+
+[GPU] Epoch 14 耗时: 1676.8s
+[GPU] 显存使用: 当前 6.8 MB, 峰值 1934.4 MB
+[GPU] 近 5 个 epoch 平均耗时: 1676.7s
+845/845 [==============================] - 1677s 2s/step - loss: 1.2050 - top1_acc: 0.5908 - macro_f1: 0.4211 - val_loss: 2.4021 - val_top1_acc: 0.3170 - val_macro_f1: 0.2242 - lr: 2.5000e-04
+Epoch 15/25
+845/845 [==============================] - ETA: 0s - loss: 1.1877 - top1_acc: 0.5929 - macro_f1: 0.4267
+Epoch 15: saving model to E:\bird\leaf_trained_model\epoch_snap_15.keras
+
+Epoch 15: val_top1_acc improved from 0.31700 to 0.38430, saving model to E:\bird\leaf_trained_model\best_model.keras
+
+[GPU] Epoch 15 耗时: 1675.9s
+[GPU] 显存使用: 当前 6.8 MB, 峰值 1934.4 MB
+[GPU] 近 5 个 epoch 平均耗时: 1676.5s
+845/845 [==============================] - 1676s 2s/step - loss: 1.1877 - top1_acc: 0.5929 - macro_f1: 0.4267 - val_loss: 1.8746 - val_top1_acc: 0.3843 - val_macro_f1: 0.2878 - lr: 2.5000e-04
+Epoch 16/25
+845/845 [==============================] - ETA: 0s - loss: 1.1662 - top1_acc: 0.6120 - macro_f1: 0.4483
+Epoch 16: saving model to E:\bird\leaf_trained_model\epoch_snap_16.keras
+
+Epoch 16: val_top1_acc improved from 0.38430 to 0.50236, saving model to E:\bird\leaf_trained_model\best_model.keras
+
+[GPU] Epoch 16 耗时: 1676.7s
+[GPU] 显存使用: 当前 6.8 MB, 峰值 1934.4 MB
+[GPU] 近 5 个 epoch 平均耗时: 1676.5s
+845/845 [==============================] - 1677s 2s/step - loss: 1.1662 - top1_acc: 0.6120 - macro_f1: 0.4483 - val_loss: 1.5052 - val_top1_acc: 0.5024 - val_macro_f1: 0.3663 - lr: 2.5000e-04
+Epoch 17/25
+845/845 [==============================] - ETA: 0s - loss: 1.1097 - top1_acc: 0.6277 - macro_f1: 0.4738
+Epoch 17: saving model to E:\bird\leaf_trained_model\epoch_snap_17.keras
+
+Epoch 17: val_top1_acc improved from 0.50236 to 0.52420, saving model to E:\bird\leaf_trained_model\best_model.keras
+
+[GPU] Epoch 17 耗时: 1677.0s
+[GPU] 显存使用: 当前 6.8 MB, 峰值 1934.4 MB
+[GPU] 近 5 个 epoch 平均耗时: 1676.7s
+845/845 [==============================] - 1677s 2s/step - loss: 1.1097 - top1_acc: 0.6277 - macro_f1: 0.4738 - val_loss: 1.3752 - val_top1_acc: 0.5242 - val_macro_f1: 0.3926 - lr: 2.5000e-04
+Epoch 18/25
+845/845 [==============================] - ETA: 0s - loss: 1.1119 - top1_acc: 0.6219 - macro_f1: 0.4639
+Epoch 18: saving model to E:\bird\leaf_trained_model\epoch_snap_18.keras
+
+Epoch 18: val_top1_acc did not improve from 0.52420
+
+[GPU] Epoch 18 耗时: 1677.2s
+[GPU] 显存使用: 当前 6.8 MB, 峰值 1934.4 MB
+[GPU] 近 5 个 epoch 平均耗时: 1676.7s
+845/845 [==============================] - 1677s 2s/step - loss: 1.1119 - top1_acc: 0.6219 - macro_f1: 0.4639 - val_loss: 2.2655 - val_top1_acc: 0.3743 - val_macro_f1: 0.2649 - lr: 2.5000e-04
+Epoch 19/25
+845/845 [==============================] - ETA: 0s - loss: 1.0815 - top1_acc: 0.6363 - macro_f1: 0.4847
+Epoch 19: saving model to E:\bird\leaf_trained_model\epoch_snap_19.keras
+
+Epoch 19: val_top1_acc did not improve from 0.52420
+
+[GPU] Epoch 19 耗时: 1676.5s
+[GPU] 显存使用: 当前 6.8 MB, 峰值 1934.4 MB
+[GPU] 近 5 个 epoch 平均耗时: 1676.7s
+845/845 [==============================] - 1677s 2s/step - loss: 1.0815 - top1_acc: 0.6363 - macro_f1: 0.4847 - val_loss: 2.9861 - val_top1_acc: 0.2527 - val_macro_f1: 0.1842 - lr: 2.5000e-04
+Epoch 20/25
+845/845 [==============================] - ETA: 0s - loss: 1.0655 - top1_acc: 0.6440 - macro_f1: 0.4882
+Epoch 20: saving model to E:\bird\leaf_trained_model\epoch_snap_20.keras
+
+Epoch 20: val_top1_acc did not improve from 0.52420
+
+Epoch 20: ReduceLROnPlateau reducing learning rate to 0.0001250000059371814.
+
+[GPU] Epoch 20 耗时: 1679.2s
+[GPU] 显存使用: 当前 6.8 MB, 峰值 1934.4 MB
+[GPU] 近 5 个 epoch 平均耗时: 1677.3s
+845/845 [==============================] - 1679s 2s/step - loss: 1.0655 - top1_acc: 0.6440 - macro_f1: 0.4882 - val_loss: 1.5244 - val_top1_acc: 0.5030 - val_macro_f1: 0.3823 - lr: 2.5000e-04
+Epoch 21/25
+845/845 [==============================] - ETA: 0s - loss: 1.0189 - top1_acc: 0.6576 - macro_f1: 0.5152
+Epoch 21: saving model to E:\bird\leaf_trained_model\epoch_snap_21.keras
+
+Epoch 21: val_top1_acc did not improve from 0.52420
+
+[GPU] Epoch 21 耗时: 1678.9s
+[GPU] 显存使用: 当前 6.8 MB, 峰值 1934.4 MB
+[GPU] 近 5 个 epoch 平均耗时: 1677.8s
+845/845 [==============================] - 1679s 2s/step - loss: 1.0189 - top1_acc: 0.6576 - macro_f1: 0.5152 - val_loss: 1.6653 - val_top1_acc: 0.4664 - val_macro_f1: 0.3407 - lr: 1.2500e-04
+Epoch 22/25
+845/845 [==============================] - ETA: 0s - loss: 0.9873 - top1_acc: 0.6702 - macro_f1: 0.5228
+Epoch 22: saving model to E:\bird\leaf_trained_model\epoch_snap_22.keras
+
+Epoch 22: val_top1_acc did not improve from 0.52420
+Restoring model weights from the end of the best epoch: 17.
+
+[GPU] Epoch 22 耗时: 1679.0s
+[GPU] 显存使用: 当前 6.8 MB, 峰值 1934.4 MB
+[GPU] 近 5 个 epoch 平均耗时: 1678.2s
+845/845 [==============================] - 1679s 2s/step - loss: 0.9873 - top1_acc: 0.6702 - macro_f1: 0.5228 - val_loss: 1.9744 - val_top1_acc: 0.4138 - val_macro_f1: 0.3093 - lr: 1.2500e-04
+Epoch 22: early stopping
+
+==================================================
+最终评估
+==================================================
+加载最佳模型: E:\bird\leaf_trained_model\best_model.keras
+Traceback (most recent call last):
+  File "E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf\train_leaf.py", line 409, in <module>
+    main()
+  File "E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf\train_leaf.py", line 388, in main
+    best_model = tf.keras.models.load_model(
+  File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\keras\utils\traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf\train_leaf.py", line 122, in __init__
+    self.tp = self.add_weight(name="tp", initializer="zeros", shape=(num_classes,))
+ValueError: Attempt to convert a value (None) with an unsupported type (<class 'NoneType'>) to a Tensor.
+
+(birdnet-gpu) E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf>

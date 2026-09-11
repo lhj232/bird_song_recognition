@@ -1,0 +1,71 @@
+(aum) averie@localhost:~/Audio-Mamba-AuM$ cat > test_baseline_noise.py << 'EOF'
+import torch
+import numpy as np
+from src.models.mamba_models import AudioMamba
+from src.dataloader import AudiosetDataset
+from sklearn.metrics import accuracy_score
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+model_path = "./experiments/birdclef_experiment/models/best_audio_model.pth"
+label_csv = "./data/birdclef_labels.csv"
+valid_json = "./data/datafiles/birdclef_valid_data.json"
+
+print(f"使用设备: {device}")
+
+model = AudioMamba(
+    num_classes=10,
+    aum_type='Bi-Bi',
+    spectrogram_size=(128, 128),
+    embed_dim=384,
+    depth=24,
+    patch_size=(16, 16),
+    strides=(10, 10),
+    if_cls_token=True,
+    use_middle_cls_token=True
+)
+
+state_dict = torch.load(model_path, map_location='cpu')
+
+# 手动过滤：只加载形状匹配的层
+model_state = model.state_dict()
+filtered_state = {}
+python test_baseline_noise.pycc:.4f}") :")}")s)dim=1).numpy())for a in audio])1e-10))k, 'N/A')}")
+使用设备: cuda
+Resize function is resample_patch_embed
+Initializing FlexiPatchEmbed with the following parameters:
+patch_size=(16, 16), in_chans=1, embed_dim=384, bias=True, norm_layer=None, flatten=True, proj_load=None, resize_func=resample_patch_embed
+The resize function is resample_patch_embed
+Initializing FlexiPosEmbed with the following parameters:
+input_size=(128, 128), pos_grid_size=(12, 12), embed_dim=384, pos_embed_load=None, pos_grid_size_load=(-1, -1), n_prefix_tokens=1, pos_embed_prefix=True
+跳过 pos_embed.pos_embed: checkpoint shape torch.Size([1, 65, 384]) vs model shape tensor([[[ 0.0218,  0.0127, -0.0068,  ...,  0.0097, -0.0384, -0.0400],
+         [ 0.0109,  0.0130, -0.0164,  ..., -0.0088,  0.0151,  0.0238],
+         [ 0.0122, -0.0231,  0.0425,  ...,  0.0210, -0.0111, -0.0174],
+         ...,
+         [ 0.0110, -0.0111, -0.0166,  ..., -0.0035, -0.0380, -0.0214],
+         [-0.0163,  0.0032,  0.0204,  ..., -0.0030,  0.0323, -0.0053],
+         [-0.0426,  0.0168, -0.0245,  ...,  0.0062, -0.0144,  0.0007]]])
+✅ Baseline 模型加载成功
+---------------the eval dataloader---------------
+now using following mask: 0 freq, 0 time
+now using mix-up with rate 0.000000
+now process birdclef
+use dataset mean -4.268 and std 4.569 to normalize the input.
+number of classes is 10
+
+📊 Baseline 噪声鲁棒性测试...
+/home/averie/Audio-Mamba-AuM/src/utilities/tokenization.py:306: UserWarning: Applied workaround for CuDNN issue, install nvrtc.so (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:80.)
+  x = F.conv2d(x, weight, bias=bias, stride=strides)
+SNR=0dB: 准确率 = 0.3406
+SNR=5dB: 准确率 = 0.4321
+SNR=10dB: 准确率 = 0.4959
+SNR=20dB: 准确率 = 0.5106
+
+📊 Baseline 噪声鲁棒性测试结果:
+========================================
+  SNR 0dB: 0.3406
+  SNR 5dB: 0.4321
+  SNR 10dB: 0.4959
+  SNR 20dB: 0.5106
+========================================
+(aum) averie@localhost:~/Audio-Mamba-AuM$

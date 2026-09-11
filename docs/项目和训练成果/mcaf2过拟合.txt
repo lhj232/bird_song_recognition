@@ -1,0 +1,242 @@
+E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf>D:\download\anaconda\envs\birdnet-gpu\python.exe -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+
+E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf>D:\download\anaconda\envs\birdnet-gpu\python.exe train_mcaf.py
+[GPU] 检测到 1 个 GPU 设备:
+  - /physical_device:GPU:0
+[GPU] 已启用显存按需增长策略
+
+检测到 10 个物种:
+  0: asbfly
+  1: ashdro1
+  2: ashpri1
+  3: ashwoo2
+  4: asikoe2
+  5: asiope1
+  6: aspfly1
+  7: aspswi1
+  8: barfly1
+  9: barswa
+
+加载训练集...
+  找到 6755 个音频文件
+2026-07-15 13:14:08.944587: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:42] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+加载验证集...
+  找到 1694 个音频文件
+
+验证数据维度...
+  输入 shape: (16, 96000)
+  标签 shape: (16, 10)
+  标签样例: [0. 0. 0. 1. 0.]
+  标签总和: 1.0
+
+构建模型...
+Model: "model_1"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ audio_input (InputLayer)    [(None, 96000)]           0
+
+ mcaf_frontend (MCAFFrontend  (None, 12, 128, 1)       896
+ )
+
+ model (Functional)          (None, 64)                60928
+
+ dense (Dense)               (None, 128)               8320
+
+ batch_normalization_4 (Batc  (None, 128)              512
+ hNormalization)
+
+ activation_4 (Activation)   (None, 128)               0
+
+ dropout_3 (Dropout)         (None, 128)               0
+
+ dense_1 (Dense)             (None, 64)                8256
+
+ batch_normalization_5 (Batc  (None, 64)               256
+ hNormalization)
+
+ activation_5 (Activation)   (None, 64)                0
+
+ dropout_4 (Dropout)         (None, 64)                0
+
+ dense_2 (Dense)             (None, 10)                650
+
+=================================================================
+Total params: 79,818
+Trainable params: 79,082
+Non-trainable params: 736
+_________________________________________________________________
+
+测试前向传播...
+2026-07-15 13:14:33.921703: E tensorflow/core/platform/windows/subprocess.cc:287] Call to CreateProcess failed. Error code: 2, command: '"ptxas.exe" "--version"'
+2026-07-15 13:14:33.925615: E tensorflow/core/platform/windows/subprocess.cc:287] Call to CreateProcess failed. Error code: 2, command: '"ptxas.exe" "--version"'
+2026-07-15 13:14:33.925758: W tensorflow/stream_executor/gpu/asm_compiler.cc:80] Couldn't get ptxas version string: INTERNAL: Couldn't invoke ptxas.exe --version
+2026-07-15 13:14:33.930473: E tensorflow/core/platform/windows/subprocess.cc:287] Call to CreateProcess failed. Error code: 2, command: '"ptxas.exe" "C:\temp\/tempfile-朕的大电脑-2b24-30468-6569f6627a0e6" "-o" "C:\temp\/tempfile-朕的大电脑-2b24-30468-6569f6627a859" "-arch=sm_89" "--warn-on-spills"'
+2026-07-15 13:14:33.931627: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] INTERNAL: Failed to launch ptxas
+Relying on driver to perform ptx compilation.
+Modify $PATH to customize ptxas location.
+This message will be only logged once.
+2026-07-15 13:14:48.399524: W tensorflow/core/common_runtime/bfc_allocator.cc:479] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.46GiB (rounded to 1572864000)requested by op Pow
+If the cause is memory fragmentation maybe the environment variable 'TF_GPU_ALLOCATOR=cuda_malloc_async' will improve the situation.
+Current allocation summary follows.
+Current allocation summary follows.
+2026-07-15 13:14:48.401639: W tensorflow/core/common_runtime/bfc_allocator.cc:491] *__************************************____________*************************************____________
+2026-07-15 13:14:48.402307: W tensorflow/core/framework/op_kernel.cc:1768] RESOURCE_EXHAUSTED: failed to allocate memory
+Traceback (most recent call last):
+  File "E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf\train_mcaf.py", line 470, in <module>
+    main()
+  File "E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf\train_mcaf.py", line 381, in main
+    test_out = model(batch_x)
+  File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\keras\utils\traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf\train_mcaf.py", line 120, in call
+    feat = self.leaf(waveform)
+  File "E:\bird\leaf\leaf-audio-master\leaf-audio-master\leaf_audio\frontend.py", line 209, in call
+    outputs = self._activation(outputs)
+  File "E:\bird\leaf\leaf-audio-master\leaf-audio-master\leaf_audio\frontend.py", line 76, in call
+    output = 2 * self._pool(x**2)
+tensorflow.python.framework.errors_impl.ResourceExhaustedError: Exception encountered when calling layer "squared_modulus" "                 f"(type SquaredModulus).
+
+{{function_node __wrapped__Pow_device_/job:localhost/replica:0/task:0/device:GPU:0}} failed to allocate memory [Op:Pow]
+
+Call arguments received by layer "squared_modulus" "                 f"(type SquaredModulus):
+  • x=tf.Tensor(shape=(16, 96000, 256), dtype=float32)
+
+E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf>D:\download\anaconda\envs\birdnet-gpu\python.exe train_mcaf.py
+[GPU] 检测到 1 个 GPU 设备:
+  - /physical_device:GPU:0
+[GPU] 已启用显存按需增长策略
+
+检测到 10 个物种:
+  0: asbfly
+  1: ashdro1
+  2: ashpri1
+  3: ashwoo2
+  4: asikoe2
+  5: asiope1
+  6: aspfly1
+  7: aspswi1
+  8: barfly1
+  9: barswa
+
+加载训练集...
+  找到 6755 个音频文件
+2026-07-15 13:16:26.291804: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:42] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+加载验证集...
+  找到 1694 个音频文件
+
+验证数据维度...
+  输入 shape: (4, 96000)
+  标签 shape: (4, 10)
+  标签样例: [0. 0. 0. 0. 0.]
+  标签总和: 1.0
+
+构建模型...
+Model: "model_1"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ audio_input (InputLayer)    [(None, 96000)]           0
+
+ mcaf_frontend (MCAFFrontend  (None, 12, 128, 1)       896
+ )
+
+ model (Functional)          (None, 64)                60928
+
+ dense (Dense)               (None, 128)               8320
+
+ batch_normalization_4 (Batc  (None, 128)              512
+ hNormalization)
+
+ activation_4 (Activation)   (None, 128)               0
+
+ dropout_3 (Dropout)         (None, 128)               0
+
+ dense_1 (Dense)             (None, 64)                8256
+
+ batch_normalization_5 (Batc  (None, 64)               256
+ hNormalization)
+
+ activation_5 (Activation)   (None, 64)                0
+
+ dropout_4 (Dropout)         (None, 64)                0
+
+ dense_2 (Dense)             (None, 10)                650
+
+=================================================================
+Total params: 79,818
+Trainable params: 79,082
+Non-trainable params: 736
+_________________________________________________________________
+
+测试前向传播...
+2026-07-15 13:16:42.159547: E tensorflow/core/platform/windows/subprocess.cc:287] Call to CreateProcess failed. Error code: 2, command: '"ptxas.exe" "--version"'
+2026-07-15 13:16:42.162635: E tensorflow/core/platform/windows/subprocess.cc:287] Call to CreateProcess failed. Error code: 2, command: '"ptxas.exe" "--version"'
+2026-07-15 13:16:42.162792: W tensorflow/stream_executor/gpu/asm_compiler.cc:80] Couldn't get ptxas version string: INTERNAL: Couldn't invoke ptxas.exe --version
+2026-07-15 13:16:42.168643: E tensorflow/core/platform/windows/subprocess.cc:287] Call to CreateProcess failed. Error code: 2, command: '"ptxas.exe" "C:\temp\/tempfile-朕的大电脑-81b4-30192-6569f6dcc5ed4" "-o" "C:\temp\/tempfile-朕的大电脑-81b4-30192-6569f6dcc6ae0" "-arch=sm_89" "--warn-on-spills"'
+2026-07-15 13:16:42.169504: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] INTERNAL: Failed to launch ptxas
+Relying on driver to perform ptx compilation.
+Modify $PATH to customize ptxas location.
+This message will be only logged once.
+  输出 shape: (4, 10)
+  预测样例: [1 1 1 1]
+  输出概率样例: [0.10073955 0.10115346 0.10000078 0.09923996 0.10052863]
+
+开始训练 25 个 epoch...
+Epoch 1/25
+1689/1689 [==============================] - ETA: 0s - loss: 2.6045 - top1_acc: 0.1620 - macro_f1: 0.1082
+Epoch 1: saving model to E:\bird\mcaf_trained_model\epoch_snap_01.keras
+
+Epoch 1: val_top1_acc improved from -inf to 0.19362, saving model to E:\bird\mcaf_trained_model\best_model.keras
+
+[GPU] Epoch 1 耗时: 1796.5s
+[GPU] 显存使用: 当前 3.2 MB, 峰值 1785.6 MB
+1689/1689 [==============================] - 1796s 1s/step - loss: 2.6045 - top1_acc: 0.1620 - macro_f1: 0.1082 - val_loss: 2.3775 - val_top1_acc: 0.1936 - val_macro_f1: 0.1055 - lr: 3.0000e-04
+Epoch 2/25
+1689/1689 [==============================] - ETA: 0s - loss: 2.4345 - top1_acc: 0.1714 - macro_f1: 0.1139
+Epoch 2: saving model to E:\bird\mcaf_trained_model\epoch_snap_02.keras
+
+Epoch 2: val_top1_acc did not improve from 0.19362
+
+[GPU] Epoch 2 耗时: 1758.1s
+[GPU] 显存使用: 当前 3.2 MB, 峰值 1785.6 MB
+[GPU] 近 5 个 epoch 平均耗时: 1777.3s
+1689/1689 [==============================] - 1758s 1s/step - loss: 2.4345 - top1_acc: 0.1714 - macro_f1: 0.1139 - val_loss: 2.4095 - val_top1_acc: 0.1688 - val_macro_f1: 0.0800 - lr: 3.0000e-04
+Epoch 3/25
+  13/1689 [..............................] - ETA: 25:55 - loss: 2.3195 - top1_acc: 0.1731 - macro_f1: 0.0929Traceback (most recent call last):
+  File "E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf\train_mcaf.py", line 470, in <module>
+    main()
+  File "E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf\train_mcaf.py", line 430, in main
+    history = model.fit(
+  File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\keras\utils\traceback_utils.py", line 65, in error_handler
+    return fn(*args, **kwargs)
+  File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\keras\engine\training.py", line 1570, in fit
+    callbacks.on_train_batch_end(end_step, logs)
+  File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\keras\callbacks.py", line 470, in on_train_batch_end
+    self._call_batch_hook(ModeKeys.TRAIN, "end", batch, logs=logs)
+  File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\keras\callbacks.py", line 317, in _call_batch_hook
+    self._call_batch_end_hook(mode, batch, logs)
+  File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\keras\callbacks.py", line 340, in _call_batch_end_hook
+    self._call_batch_hook_helper(hook_name, batch, logs)
+  File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\keras\callbacks.py", line 388, in _call_batch_hook_helper
+    hook(batch, logs)
+  File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\keras\callbacks.py", line 1081, in on_train_batch_end
+    self._batch_update_progbar(batch, logs)
+  File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\keras\callbacks.py", line 1157, in _batch_update_progbar
+    logs = tf_utils.sync_to_numpy_or_python_type(logs)
+  File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\keras\utils\tf_utils.py", line 635, in sync_to_numpy_or_python_type
+    return tf.nest.map_structure(_to_single_numpy_or_python_type, tensors)
+  File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\tensorflow\python\util\nest.py", line 917, in map_structure
+    structure[0], [func(*x) for x in entries],
+  File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\tensorflow\python\util\nest.py", line 917, in <listcomp>
+    structure[0], [func(*x) for x in entries],
+  File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\keras\utils\tf_utils.py", line 628, in _to_single_numpy_or_python_type
+    t = t.numpy()
+  File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\tensorflow\python\framework\ops.py", line 1157, in numpy
+    maybe_arr = self._numpy()  # pylint: disable=protected-access
+  File "D:\download\anaconda\envs\birdnet-gpu\lib\site-packages\tensorflow\python\framework\ops.py", line 1123, in _numpy
+    return self._numpy_internal()
+KeyboardInterrupt
+^C
+E:\bird\BirdNET-Analyzer-main\BirdNET-Analyzer-main-mcaf>

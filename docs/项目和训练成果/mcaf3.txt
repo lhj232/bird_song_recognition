@@ -1,0 +1,327 @@
+ dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2026-06-20 15:37:02.154533: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:42] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+[GPU] 检测到 1 个 GPU 设备:
+  - /physical_device:GPU:0
+[GPU] 已启用显存按需增长策略
+
+检测到 10 个物种:
+  0: asbfly
+  1: ashdro1
+  2: ashpri1
+  3: ashwoo2
+  4: asikoe2
+  5: asiope1
+  6: aspfly1
+  7: aspswi1
+  8: barfly1
+  9: barswa
+
+加载训练集...
+  找到 6755 个音频文件
+加载验证集...
+  找到 1694 个音频文件
+
+验证数据维度...
+  输入 shape: (64, 72000)
+  标签 shape: (64, 10)
+  标签样例: [0. 1. 0. 0. 0.]
+
+构建模型...
+Model: "model_1"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ audio_input (InputLayer)    [(None, 72000)]           0         
+                                                                 
+ leaf_frontend (LeafFrontend  (None, 6, 96, 1)         672       
+ )                                                               
+                                                                 
+ model (Functional)          (None, 128)               93568     
+                                                                 
+ dense (Dense)               (None, 256)               33024     
+                                                                 
+ batch_normalization_3 (Batc  (None, 256)              1024      
+ hNormalization)                                                 
+                                                                 
+ dropout_1 (Dropout)         (None, 256)               0         
+                                                                 
+ dense_1 (Dense)             (None, 10)                2570      
+                                                                 
+=================================================================
+Total params: 130,858
+Trainable params: 129,898
+Non-trainable params: 960
+_________________________________________________________________
+
+测试前向传播...
+  输出 shape: (64, 10)
+  预测样例: [8 8 8 8 8]
+  输出概率样例: [0.09925089 0.0995786  0.09955522 0.09938645 0.1004    ]
+
+开始训练 25 个 epoch...
+Epoch 1/25
+106/106 [==============================] - ETA: 0s - loss: 3.0222 - top1_acc: 0.1645 - macro_f1: 0.1364   
+Epoch 1: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_01.keras
+
+Epoch 1: val_top1_acc improved from -inf to 0.15289, saving model to /root/autodl-tmp/leaf_trained_model/best_model.keras
+
+[GPU] Epoch 1 耗时: 329.1s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13635.0 MB
+106/106 [==============================] - 329s 3s/step - loss: 3.0222 - top1_acc: 0.1645 - macro_f1: 0.1364 - val_loss: 2.1944 - val_top1_acc: 0.1529 - val_macro_f1: 0.0265 - lr: 5.0000e-04
+Epoch 2/25
+106/106 [==============================] - ETA: 0s - loss: 2.4899 - top1_acc: 0.2521 - macro_f1: 0.1868  
+Epoch 2: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_02.keras
+
+Epoch 2: val_top1_acc did not improve from 0.15289
+
+[GPU] Epoch 2 耗时: 307.8s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13706.6 MB
+[GPU] 近 5 个 epoch 平均耗时: 318.4s
+106/106 [==============================] - 308s 3s/step - loss: 2.4899 - top1_acc: 0.2521 - macro_f1: 0.1868 - val_loss: 2.1744 - val_top1_acc: 0.1529 - val_macro_f1: 0.0265 - lr: 5.0000e-04
+Epoch 3/25
+106/106 [==============================] - ETA: 0s - loss: 2.2248 - top1_acc: 0.2979 - macro_f1: 0.2178  
+Epoch 3: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_03.keras
+
+Epoch 3: val_top1_acc improved from 0.15289 to 0.16411, saving model to /root/autodl-tmp/leaf_trained_model/best_model.keras
+
+[GPU] Epoch 3 耗时: 307.4s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13706.6 MB
+[GPU] 近 5 个 epoch 平均耗时: 314.8s
+106/106 [==============================] - 307s 3s/step - loss: 2.2248 - top1_acc: 0.2979 - macro_f1: 0.2178 - val_loss: 2.1661 - val_top1_acc: 0.1641 - val_macro_f1: 0.0430 - lr: 5.0000e-04
+Epoch 4/25
+106/106 [==============================] - ETA: 0s - loss: 2.0510 - top1_acc: 0.3390 - macro_f1: 0.2377  
+Epoch 4: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_04.keras
+
+Epoch 4: val_top1_acc improved from 0.16411 to 0.23908, saving model to /root/autodl-tmp/leaf_trained_model/best_model.keras
+
+[GPU] Epoch 4 耗时: 308.9s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13706.6 MB
+[GPU] 近 5 个 epoch 平均耗时: 313.3s
+106/106 [==============================] - 309s 3s/step - loss: 2.0510 - top1_acc: 0.3390 - macro_f1: 0.2377 - val_loss: 2.0871 - val_top1_acc: 0.2391 - val_macro_f1: 0.1397 - lr: 5.0000e-04
+Epoch 5/25
+106/106 [==============================] - ETA: 0s - loss: 1.9333 - top1_acc: 0.3646 - macro_f1: 0.2586  
+Epoch 5: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_05.keras
+
+Epoch 5: val_top1_acc improved from 0.23908 to 0.36541, saving model to /root/autodl-tmp/leaf_trained_model/best_model.keras
+
+[GPU] Epoch 5 耗时: 308.9s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13706.6 MB
+[GPU] 近 5 个 epoch 平均耗时: 312.4s
+106/106 [==============================] - 309s 3s/step - loss: 1.9333 - top1_acc: 0.3646 - macro_f1: 0.2586 - val_loss: 1.8090 - val_top1_acc: 0.3654 - val_macro_f1: 0.2381 - lr: 5.0000e-04
+Epoch 6/25
+106/106 [==============================] - ETA: 0s - loss: 1.8141 - top1_acc: 0.3890 - macro_f1: 0.2751  
+Epoch 6: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_06.keras
+
+Epoch 6: val_top1_acc did not improve from 0.36541
+
+[GPU] Epoch 6 耗时: 309.2s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13706.6 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.4s
+106/106 [==============================] - 309s 3s/step - loss: 1.8141 - top1_acc: 0.3890 - macro_f1: 0.2751 - val_loss: 1.8229 - val_top1_acc: 0.3436 - val_macro_f1: 0.2407 - lr: 5.0000e-04
+Epoch 7/25
+106/106 [==============================] - ETA: 0s - loss: 1.7343 - top1_acc: 0.4157 - macro_f1: 0.2966  
+Epoch 7: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_07.keras
+
+Epoch 7: val_top1_acc improved from 0.36541 to 0.45868, saving model to /root/autodl-tmp/leaf_trained_model/best_model.keras
+
+[GPU] Epoch 7 耗时: 309.2s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13706.6 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.7s
+106/106 [==============================] - 309s 3s/step - loss: 1.7343 - top1_acc: 0.4157 - macro_f1: 0.2966 - val_loss: 1.5868 - val_top1_acc: 0.4587 - val_macro_f1: 0.3132 - lr: 5.0000e-04
+Epoch 8/25
+106/106 [==============================] - ETA: 0s - loss: 1.6758 - top1_acc: 0.4281 - macro_f1: 0.2987  
+Epoch 8: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_08.keras
+
+Epoch 8: val_top1_acc did not improve from 0.45868
+
+[GPU] Epoch 8 耗时: 308.4s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13706.6 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.9s
+106/106 [==============================] - 308s 3s/step - loss: 1.6758 - top1_acc: 0.4281 - macro_f1: 0.2987 - val_loss: 1.5862 - val_top1_acc: 0.4427 - val_macro_f1: 0.3031 - lr: 5.0000e-04
+Epoch 9/25
+106/106 [==============================] - ETA: 0s - loss: 1.6171 - top1_acc: 0.4518 - macro_f1: 0.3219  
+Epoch 9: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_09.keras
+
+Epoch 9: val_top1_acc improved from 0.45868 to 0.46399, saving model to /root/autodl-tmp/leaf_trained_model/best_model.keras
+
+[GPU] Epoch 9 耗时: 308.6s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13706.6 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.8s
+106/106 [==============================] - 309s 3s/step - loss: 1.6171 - top1_acc: 0.4518 - macro_f1: 0.3219 - val_loss: 1.5450 - val_top1_acc: 0.4640 - val_macro_f1: 0.3173 - lr: 5.0000e-04
+Epoch 10/25
+106/106 [==============================] - ETA: 0s - loss: 1.5390 - top1_acc: 0.4699 - macro_f1: 0.3322  
+Epoch 10: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_10.keras
+
+Epoch 10: val_top1_acc improved from 0.46399 to 0.47462, saving model to /root/autodl-tmp/leaf_trained_model/best_model.keras
+
+[GPU] Epoch 10 耗时: 308.9s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13706.6 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.9s
+106/106 [==============================] - 309s 3s/step - loss: 1.5390 - top1_acc: 0.4699 - macro_f1: 0.3322 - val_loss: 1.5017 - val_top1_acc: 0.4746 - val_macro_f1: 0.3251 - lr: 5.0000e-04
+Epoch 11/25
+106/106 [==============================] - ETA: 0s - loss: 1.4856 - top1_acc: 0.4873 - macro_f1: 0.3439  
+Epoch 11: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_11.keras
+
+Epoch 11: val_top1_acc did not improve from 0.47462
+
+[GPU] Epoch 11 耗时: 308.7s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13706.6 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.8s
+106/106 [==============================] - 309s 3s/step - loss: 1.4856 - top1_acc: 0.4873 - macro_f1: 0.3439 - val_loss: 1.6059 - val_top1_acc: 0.4563 - val_macro_f1: 0.2955 - lr: 5.0000e-04
+Epoch 12/25
+106/106 [==============================] - ETA: 0s - loss: 1.4425 - top1_acc: 0.5078 - macro_f1: 0.3663  
+Epoch 12: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_12.keras
+
+Epoch 12: val_top1_acc improved from 0.47462 to 0.48406, saving model to /root/autodl-tmp/leaf_trained_model/best_model.keras
+
+[GPU] Epoch 12 耗时: 308.5s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13706.6 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.6s
+106/106 [==============================] - 309s 3s/step - loss: 1.4425 - top1_acc: 0.5078 - macro_f1: 0.3663 - val_loss: 1.4635 - val_top1_acc: 0.4841 - val_macro_f1: 0.3410 - lr: 5.0000e-04
+Epoch 13/25
+106/106 [==============================] - ETA: 0s - loss: 1.3921 - top1_acc: 0.5229 - macro_f1: 0.3731  
+Epoch 13: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_13.keras
+
+Epoch 13: val_top1_acc improved from 0.48406 to 0.49410, saving model to /root/autodl-tmp/leaf_trained_model/best_model.keras
+
+[GPU] Epoch 13 耗时: 308.7s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13706.6 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.7s
+106/106 [==============================] - 309s 3s/step - loss: 1.3921 - top1_acc: 0.5229 - macro_f1: 0.3731 - val_loss: 1.4974 - val_top1_acc: 0.4941 - val_macro_f1: 0.3375 - lr: 5.0000e-04
+Epoch 14/25
+106/106 [==============================] - ETA: 0s - loss: 1.3529 - top1_acc: 0.5344 - macro_f1: 0.3893  
+Epoch 14: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_14.keras
+
+Epoch 14: val_top1_acc did not improve from 0.49410
+
+[GPU] Epoch 14 耗时: 308.3s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13706.6 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.6s
+106/106 [==============================] - 308s 3s/step - loss: 1.3529 - top1_acc: 0.5344 - macro_f1: 0.3893 - val_loss: 1.4811 - val_top1_acc: 0.4911 - val_macro_f1: 0.3308 - lr: 5.0000e-04
+Epoch 15/25
+106/106 [==============================] - ETA: 0s - loss: 1.3085 - top1_acc: 0.5506 - macro_f1: 0.3958  
+Epoch 15: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_15.keras
+
+Epoch 15: val_top1_acc did not improve from 0.49410
+
+Epoch 15: ReduceLROnPlateau reducing learning rate to 0.0002500000118743628.
+
+[GPU] Epoch 15 耗时: 308.7s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13706.6 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.6s
+106/106 [==============================] - 309s 3s/step - loss: 1.3085 - top1_acc: 0.5506 - macro_f1: 0.3958 - val_loss: 1.5653 - val_top1_acc: 0.4734 - val_macro_f1: 0.3145 - lr: 5.0000e-04
+Epoch 16/25
+106/106 [==============================] - ETA: 0s - loss: 1.2342 - top1_acc: 0.5808 - macro_f1: 0.4166  
+Epoch 16: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_16.keras
+
+Epoch 16: val_top1_acc improved from 0.49410 to 0.53601, saving model to /root/autodl-tmp/leaf_trained_model/best_model.keras
+
+[GPU] Epoch 16 耗时: 308.8s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13706.6 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.6s
+106/106 [==============================] - 309s 3s/step - loss: 1.2342 - top1_acc: 0.5808 - macro_f1: 0.4166 - val_loss: 1.3702 - val_top1_acc: 0.5360 - val_macro_f1: 0.3770 - lr: 2.5000e-04
+Epoch 17/25
+106/106 [==============================] - ETA: 0s - loss: 1.1899 - top1_acc: 0.5936 - macro_f1: 0.4334  
+Epoch 17: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_17.keras
+
+Epoch 17: val_top1_acc improved from 0.53601 to 0.54604, saving model to /root/autodl-tmp/leaf_trained_model/best_model.keras
+
+[GPU] Epoch 17 耗时: 308.5s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13706.6 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.6s
+106/106 [==============================] - 309s 3s/step - loss: 1.1899 - top1_acc: 0.5936 - macro_f1: 0.4334 - val_loss: 1.3785 - val_top1_acc: 0.5460 - val_macro_f1: 0.3788 - lr: 2.5000e-04
+Epoch 18/25
+106/106 [==============================] - ETA: 0s - loss: 1.1709 - top1_acc: 0.6009 - macro_f1: 0.4433  
+Epoch 18: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_18.keras
+
+Epoch 18: val_top1_acc did not improve from 0.54604
+
+[GPU] Epoch 18 耗时: 308.5s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13706.6 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.6s
+106/106 [==============================] - 309s 3s/step - loss: 1.1709 - top1_acc: 0.6009 - macro_f1: 0.4433 - val_loss: 1.4104 - val_top1_acc: 0.5153 - val_macro_f1: 0.3759 - lr: 2.5000e-04
+Epoch 19/25
+106/106 [==============================] - ETA: 0s - loss: 1.1445 - top1_acc: 0.6083 - macro_f1: 0.4503  
+Epoch 19: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_19.keras
+
+Epoch 19: val_top1_acc did not improve from 0.54604
+
+[GPU] Epoch 19 耗时: 309.0s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13706.6 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.7s
+106/106 [==============================] - 309s 3s/step - loss: 1.1445 - top1_acc: 0.6083 - macro_f1: 0.4503 - val_loss: 1.3634 - val_top1_acc: 0.5443 - val_macro_f1: 0.3836 - lr: 2.5000e-04
+Epoch 20/25
+106/106 [==============================] - ETA: 0s - loss: 1.1148 - top1_acc: 0.6178 - macro_f1: 0.4582  
+Epoch 20: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_20.keras
+
+Epoch 20: val_top1_acc improved from 0.54604 to 0.54723, saving model to /root/autodl-tmp/leaf_trained_model/best_model.keras
+
+[GPU] Epoch 20 耗时: 308.8s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13706.6 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.7s
+106/106 [==============================] - 309s 3s/step - loss: 1.1148 - top1_acc: 0.6178 - macro_f1: 0.4582 - val_loss: 1.3722 - val_top1_acc: 0.5472 - val_macro_f1: 0.3819 - lr: 2.5000e-04
+Epoch 21/25
+106/106 [==============================] - ETA: 0s - loss: 1.0929 - top1_acc: 0.6249 - macro_f1: 0.4597  
+Epoch 21: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_21.keras
+
+Epoch 21: val_top1_acc improved from 0.54723 to 0.55903, saving model to /root/autodl-tmp/leaf_trained_model/best_model.keras
+
+[GPU] Epoch 21 耗时: 308.8s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13706.6 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.7s
+106/106 [==============================] - 309s 3s/step - loss: 1.0929 - top1_acc: 0.6249 - macro_f1: 0.4597 - val_loss: 1.3368 - val_top1_acc: 0.5590 - val_macro_f1: 0.4076 - lr: 2.5000e-04
+Epoch 22/25
+106/106 [==============================] - ETA: 0s - loss: 1.0687 - top1_acc: 0.6369 - macro_f1: 0.4842  
+Epoch 22: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_22.keras
+
+Epoch 22: val_top1_acc did not improve from 0.55903
+
+[GPU] Epoch 22 耗时: 308.3s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13706.6 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.7s
+106/106 [==============================] - 308s 3s/step - loss: 1.0687 - top1_acc: 0.6369 - macro_f1: 0.4842 - val_loss: 1.3719 - val_top1_acc: 0.5431 - val_macro_f1: 0.3904 - lr: 2.5000e-04
+Epoch 23/25
+106/106 [==============================] - ETA: 0s - loss: 1.0431 - top1_acc: 0.6432 - macro_f1: 0.4839  
+Epoch 23: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_23.keras
+
+Epoch 23: val_top1_acc improved from 0.55903 to 0.56021, saving model to /root/autodl-tmp/leaf_trained_model/best_model.keras
+
+[GPU] Epoch 23 耗时: 308.7s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13710.9 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.7s
+106/106 [==============================] - 309s 3s/step - loss: 1.0431 - top1_acc: 0.6432 - macro_f1: 0.4839 - val_loss: 1.3580 - val_top1_acc: 0.5602 - val_macro_f1: 0.4233 - lr: 2.5000e-04
+Epoch 24/25
+106/106 [==============================] - ETA: 0s - loss: 1.0194 - top1_acc: 0.6527 - macro_f1: 0.4951  
+Epoch 24: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_24.keras
+
+Epoch 24: val_top1_acc did not improve from 0.56021
+
+Epoch 24: ReduceLROnPlateau reducing learning rate to 0.0001250000059371814.
+
+[GPU] Epoch 24 耗时: 308.0s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13710.9 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.5s
+106/106 [==============================] - 308s 3s/step - loss: 1.0194 - top1_acc: 0.6527 - macro_f1: 0.4951 - val_loss: 1.3836 - val_top1_acc: 0.5508 - val_macro_f1: 0.3981 - lr: 2.5000e-04
+Epoch 25/25
+106/106 [==============================] - ETA: 0s - loss: 0.9660 - top1_acc: 0.6697 - macro_f1: 0.5125  
+Epoch 25: saving model to /root/autodl-tmp/leaf_trained_model/epoch_snap_25.keras
+
+Epoch 25: val_top1_acc improved from 0.56021 to 0.56375, saving model to /root/autodl-tmp/leaf_trained_model/best_model.keras
+
+[GPU] Epoch 25 耗时: 308.6s
+[GPU] 显存使用: 当前 34.9 MB, 峰值 13710.9 MB
+[GPU] 近 5 个 epoch 平均耗时: 308.5s
+106/106 [==============================] - 309s 3s/step - loss: 0.9660 - top1_acc: 0.6697 - macro_f1: 0.5125 - val_loss: 1.3332 - val_top1_acc: 0.5638 - val_macro_f1: 0.4267 - lr: 1.2500e-04
+
+==================================================
+最终评估
+==================================================
+加载最佳模型: /root/autodl-tmp/leaf_trained_model/best_model.keras
+27/27 [==============================] - 26s 925ms/step - loss: 1.3332 - top1_acc: 0.5638 - macro_f1: 0.4267
+
+验证集 Loss: 1.3332
+验证集 Top-1 准确率: 0.5638
+验证集 Macro F1: 0.4267
+
+训练日志已保存到: /root/autodl-tmp/leaf_trained_model/train_log.json
+root@autodl-container-xy038apcsf-f6d4625e:~/autodl-tmp/BirdNET-Analyzer-main-mcaf# 
